@@ -16,9 +16,10 @@ public class User {
 	 private String emailId;
 	 private String userType;
 	 private boolean approve;
+	 private String status;
 	 
 	 public User(String name, Date dateofBirth, String username, String password, 
-			 String gender, String address, String city, int pincode, String usertype,	String emailid) {
+			 String gender, String address, String city, int pincode, String usertype,	String emailid ) {
  
 		this.name = name;
 		this.dateOfBirth = dateofBirth;
@@ -30,10 +31,11 @@ public class User {
 		this.pincode = pincode;
 		this.userType = usertype;
 		this.emailId =emailid;
+		
 	}
 
 	 public User(String name, Date dateofBirth, String username, String password, String gender, 
-			 String address, String city, int pincode, String usertype,	String emailid, boolean approve) {
+			 String address, String city, int pincode, String usertype,	String emailid, boolean approve,String status ) {
 
 		this.name = name;
 		this.dateOfBirth = dateofBirth;
@@ -46,6 +48,7 @@ public class User {
 		this.userType = usertype;
 		this.emailId = emailid;
 		this.approve = approve;
+		this.status=status;
 	}
 
 	public int getId() {
@@ -137,21 +140,29 @@ public class User {
 		this.userType = usertype;
 	}
 
-	 public void setApprove(boolean approve) {
+	public void setApprove(boolean approve) {
 		 this.approve= approve;
-	 }
-	 
-	 public boolean getApprove() {
+	}
+
+	public boolean getApprove() {
 			return approve;
-	 }
- 
-	 public User() {	}
+	}
 
-	 public User(String username, String password) {
+	public String getStatus() {
+		 return status;
+	}
+	 
+	public void setStatus (String status) {
+		 this.status=status;
+	}
+	
+	public User() {	}
 
-	 }
+	public User(String username, String password) {
 
-	 public User(String password, String address, String city, int pincode, int id) {
+	}
+
+	public User(String password, String address, String city, int pincode, int id) {
 		this.password = password;
 		this.address = address;   
 		this.city = city;
@@ -159,4 +170,5 @@ public class User {
 		this.id = id;
 	 }
 
+	
 }

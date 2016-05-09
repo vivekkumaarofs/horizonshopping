@@ -17,6 +17,7 @@ import com.ofs.util.DatabaseUtil;
 public class UserDAOImpl implements UserDAO {
 
 	private static final String USER_TYPE = "User";
+	private static final String STATUS = "WFA";
 	boolean values = false;
 
 	public int addUser(User user) throws Exception {
@@ -33,6 +34,7 @@ public class UserDAOImpl implements UserDAO {
 		ps.setInt(8, user.getPincode());
 		ps.setString(9, USER_TYPE);
 		ps.setString(10, user.getEmailid());
+		ps.setString(11, STATUS);
 		ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();
@@ -112,6 +114,7 @@ public class UserDAOImpl implements UserDAO {
 			user.setCity(resultset.getString("city"));
 			user.setPincode(resultset.getInt("pincode"));
 			user.setEmailid(resultset.getString("email_id"));
+			user.setStatus(resultset.getString("status"));
 			userList.add(user);	
 		}
 		

@@ -13,14 +13,15 @@ public class DAOQueries {
 			append("             city,         ").
 			append("             pincode,      ").
 			append("             user_type,    ").
-			append("             email_id)     ").
+			append("             email_id,     ").
+			append("             status)       ").
 			append("VALUES      (?, ?,         ").
 			append("             ?, ?,         ").
 			append("             ?, ?,         ").
 			append("             ?, ?,         ").
-			append("             ?, ?);        ").
+			append("             ?, ?, ?);     ").
 			toString(); 
- 
+  
 	public final static String MODIFY_DETAILS = new StringBuilder().
 		    append("UPDATE user_info       ").
 		    append("SET    (user_name = ?, ").
@@ -68,7 +69,8 @@ public class DAOQueries {
 			append("		address,       ").      
 			append("		city,          ").      
 			append("		pincode,       ").      
-			append("		email_id,      ").     
+			append("		email_id,      ").
+			append("		status,        ").
 			append("		approve        ").
 			append(" FROM  user_info;      ").
 			toString();
