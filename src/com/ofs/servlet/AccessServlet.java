@@ -28,7 +28,7 @@ public class AccessServlet extends HttpServlet {
 		response.setContentType("text/html");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		PrintWriter out = response.getWriter(); 
+		PrintWriter out = response.getWriter();
 		UserService userservice = new UserServiceImpl();
 
 		try {
@@ -65,7 +65,7 @@ public class AccessServlet extends HttpServlet {
 		StringBuffer requestJSON = new StringBuffer();
 		String line = null;
 		try {
-		
+
 			BufferedReader reader = request.getReader();
 			while ((line = reader.readLine()) != null)
 				requestJSON.append(line);
