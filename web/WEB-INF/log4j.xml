@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"  xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="mailAppender" class="org.apache.log4j.net.SMTPAppender">
+        <param name="BufferSize" value="50" />
+        <param name="SMTPHost" value="smtp.gmail.com" />
+        <param name="SMTPPort" value="587" />
+        <param name="SMTPUsername" value="vivekaa3108@gmail.com" />
+        <param name="SMTPPassword" value="Google.com" />
+        <param name="From" value="vivekaa3108@gmail.com" />
+        <param name="To" value="vivekkrmr@live.com" />
+        <param name="Subject" value="Testing Log4j mail notification" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}]%n%n%-5p%n%n%c%n%n%m%n%n" />
+        </layout>
+        <root>
+        <priority value="info" />
+        <appender-ref ref="mailAppender" />
+    </root>
+</log4j:configuration>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="horizon.webinf.classes" path="src"/>
+	<classpathentry kind="src" output="horizon" path="web"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jackson-annotations-2.7.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jackson-databind-2.7.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-5.1.38-bin.jar"/>
+	<classpathentry kind="lib" path="D:/dev/log4j/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/dev/log4j/mail-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/dev/log4j/slf4j-api-1.7.1.jar"/>
+	<classpathentry kind="lib" path="D:/dev/log4j/slf4j-log4j12-1.7.1.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jndi/javax.mail.glassfish-1.4.1.v201005082020.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jndi/javax.transaction-api-1.2.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/com.fasterxml.jackson.core.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-alpn-server-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-annotations-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-client-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-client-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-http-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-http-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-infinispan-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-servlet-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-servlets-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-util-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-util-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-webapp-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-webapp-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-xml-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/servlet-api-3.1.jar" sourcepath="SOURCE_ATTACHER/javax.servlet-api-3.1.0-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-security-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-security-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-server-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-server-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/jetty-io-9.3.6.v20151106.jar" sourcepath="SOURCE_ATTACHER/jetty-io-9.3.6.v20151106-sources.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/annotations/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/http2/http2-common-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/http2/http2-hpack-9.3.6.v20151106.jar"/>
+	<classpathentry kind="var" path="JETTY_SERVER/lib/http2/http2-server-9.3.6.v20151106.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
