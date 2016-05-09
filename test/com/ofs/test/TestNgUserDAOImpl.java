@@ -119,24 +119,24 @@ public class TestNgUserDAOImpl {
 //		}
 //	}
 
-	@Test
-	public void testLogin() {
-
-		try {
-
-			HttpClient httpClient = new HttpClient();
-			httpClient.start();
-			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
-			         							 .param("username", "vivek234")
-			         							 .param("password", "password")
-			         							 .method(HttpMethod.POST)
-			         							 .send();
-			log(response.getStatus());
-			log(response); 
-		} catch (Exception e) {
-			throw new AppException(e);
-		}
-	}
+//	@Test
+//	public void testLogin() {
+//
+//		try {
+//
+//			HttpClient httpClient = new HttpClient();
+//			httpClient.start();
+//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
+//			         							 .param("username", "vivek234")
+//			         							 .param("password", "password")
+//			         							 .method(HttpMethod.POST)
+//			         							 .send();
+//			log(response.getStatus());
+//			log(response);
+//		} catch (Exception e) {
+//			throw new AppException(e);
+//		}
+//	}
 
 //	@Test(dataProvider = "sdpCreate")	
 //	public void testCreate(String a , String b) {
@@ -156,31 +156,31 @@ public class TestNgUserDAOImpl {
 //		};
 //	}
 
-//@Test(dataProvider= "sdpupdate")
-//public void testcreate (String input)  {
-//	
-//		try {
-//			HttpClient httpClient = new HttpClient();	
-//			httpClient.start();
-//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
-//											.content(new StringContentProvider(input))
-//												 .method(HttpMethod.PUT)
-//												 .send();
-//			System.out.println(response.getStatus());
-//			System.out.println(response); 
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	
-//
-//	@DataProvider
-//	public Object[][] sdpupdate() {
-//		
-//		return new  Object[][] {
-//			new Object[] {"{ \" password \" : \" Pass@342 \", \" address \": \" tambaram \", \" city \": \" chennai \", \" pincode \" : 600013 , \"id\": 55 }"} 
-//		};
-//		}
+@Test(dataProvider= "sdpupdate")
+public void testcreate (String input)  {
+	
+		try {
+			HttpClient httpClient = new HttpClient();	
+			httpClient.start();
+			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
+											.content(new StringContentProvider(input))
+												 .method(HttpMethod.PUT)
+												 .send();
+			System.out.println(response.getStatus());
+			System.out.println(response); 
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+
+	@DataProvider
+	public Object[][] sdpupdate() {
+		
+		return new  Object[][] {
+			new Object[] {"{ \" password \" : \" Pass@342 \", \" address \": \" tambaram \", \" city \": \" chennai \", \" pincode \" : 600013 , \"id\": 55 }"} 
+		};
+		}
 
 	
 //	@Test(dataProvider= "sdpupdate")

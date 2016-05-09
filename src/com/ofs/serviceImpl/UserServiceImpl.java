@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 //		validation.validateUserDetails(user);
 		UserDAO userDaoImpl = new UserDAOImpl();
 		userDaoImpl.addUser(user);
-	} 
+	}
 	
 	public User loginService(String username, String password) throws AppException {
 

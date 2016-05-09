@@ -2,15 +2,22 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="675" started-at="2016-05-09T07:45:55Z" finished-at="2016-05-09T07:45:56Z">
+  <suite name="Default suite" duration-ms="422" started-at="2016-05-09T10:20:13Z" finished-at="2016-05-09T10:20:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="675" started-at="2016-05-09T07:45:55Z" finished-at="2016-05-09T07:45:56Z">
+    <test name="Default test" duration-ms="422" started-at="2016-05-09T10:20:13Z" finished-at="2016-05-09T10:20:13Z">
       <class name="com.ofs.test.TestNgUserDAOImpl">
-        <test-method status="PASS" signature="testLogin()[pri:0, instance:com.ofs.test.TestNgUserDAOImpl@e3cb8e]" name="testLogin" duration-ms="659" started-at="2016-05-09T13:15:55Z" finished-at="2016-05-09T13:15:56Z">
+        <test-method status="PASS" signature="testcreate(java.lang.String)[pri:0, instance:com.ofs.test.TestNgUserDAOImpl@4102b8]" name="testcreate" duration-ms="391" started-at="2016-05-09T15:50:13Z" data-provider="sdpupdate" finished-at="2016-05-09T15:50:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{ " password " : " Pass@342 ", " address ": " tambaram ", " city ": " chennai ", " pincode " : 600013 , "id": 55 }]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLogin -->
+        </test-method> <!-- testcreate -->
       </class> <!-- com.ofs.test.TestNgUserDAOImpl -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
