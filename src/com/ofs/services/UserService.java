@@ -12,5 +12,6 @@ public interface UserService {
 	User loginService(String username, String password) throws Exception;
 	List<User> readAllUserService() throws Exception;
 	User readOneService(int id) throws Exception;
-	boolean updateOneUserService(User user) throws Exception;
+	void updateOneUserService(User user) throws Exception;
+	public void updateApprovalService(User user) throws Exception;
 }

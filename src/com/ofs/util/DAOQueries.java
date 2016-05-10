@@ -85,9 +85,9 @@ public class DAOQueries {
 			toString();
 
 	public static final String USER_APPROVAL = new StringBuilder().
-			append(" UPDATE user_info    ").
-			append(" SET    approval = ? ").
-			append(" WHERE  id= ?;       ").
+			append(" UPDATE user_info  ").
+			append(" SET    status = ? ").
+			append(" WHERE  id= ?;     ").
 			toString();
 
 } 

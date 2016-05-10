@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
 
 	public void addUser(User user) throws SQLException, Exception {
 
-//		ValidationHorizonShopping validation = new ValidationHorizonShopping();
-//		validation.validateUserDetails(user);
+		ValidationHorizonShopping validation = new ValidationHorizonShopping();
+		validation.validateUserDetails(user);
 		UserDAO userDaoImpl = new UserDAOImpl();
 		userDaoImpl.addUser(user);
 	}
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	public boolean updateOneUserService(User user) throws Exception {
+	public void updateOneUserService(User user) throws AppException {
 		
 		try {
 			UserDAO userDAO = new UserDAOImpl();
@@ -71,16 +71,16 @@ public class UserServiceImpl implements UserService {
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
-		return true;
+	}
+	
+	public void updateApprovalService(User user) throws Exception {
+
+		try {
+			UserDAO userDAO = new UserDAOImpl();
+			userDAO.editApproval(user);
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
 	}
 
 }
-
-
-//		Calendar cal = new GregorianCalendar();
-//		Calendar now = new GregorianCalendar();
-//        int age = now.get(Calendar.YEAR) - user.getDateofbirth(Calendar.YEAR);
-//        
-//        if (age<18){
-//            throw new AppException(AppErrorCode.INVALID_DATE_OF_BIRTH);
-//        } 

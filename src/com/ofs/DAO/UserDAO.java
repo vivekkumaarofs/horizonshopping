@@ -28,5 +28,5 @@ public interface UserDAO {
 	public int updateUser( User user) throws Exception, AppException; 
 	
 	/** Edit  User Approval Records **/
-	public int editApproval(int id) throws Exception, AppException;
+	public int editApproval(User user) throws Exception, AppException;
 }

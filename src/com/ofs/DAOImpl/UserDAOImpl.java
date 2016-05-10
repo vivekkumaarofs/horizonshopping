@@ -59,7 +59,6 @@ public class UserDAOImpl implements UserDAO {
 
 	public int updateUser(User user) throws Exception, AppException {
 		
-		//int id = (Integer) user.getId();
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.UPDATE_USER_DETAILS);
 		ps.setString(1, user.getPassword());
@@ -121,16 +120,16 @@ public class UserDAOImpl implements UserDAO {
 		return userList;
 	}
 
-	public int editApproval(int id) throws Exception, AppException {
+	public int editApproval(User user) throws Exception, AppException {
 
-		User user = new User();
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.USER_APPROVAL);
-		ps.setBoolean(1, user.getApprove());
+		ps.setString(1, user.getStatus());
 		ps.setInt(2, user.getId());
 		int rowsAffected = ps.executeUpdate();
 		return rowsAffected; 
 	}
+
 	
 	public void deleteUser(int id) throws Exception, AppException {
 		
