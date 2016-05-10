@@ -30,7 +30,6 @@
         <param-name>log4jConfigLocation</param-name>
         <param-value>/web/WEB-INF/log4j.xml</param-value>
     </context-param>
-     
     <listener>  
         <listener-class>com.ofs.servlet.AccessServlet</listener-class>
     </listener>-->

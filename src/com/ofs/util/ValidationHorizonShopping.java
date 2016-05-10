@@ -29,7 +29,7 @@ public class ValidationHorizonShopping {
 				!(user.getPassword().matches(passwordpattern))) { 
 			throw new AppException(AppErrorCode.INVALID_PASSWORD); 
 		}		
-		
+
 		if(user.getGender() == null || user.getGender().isEmpty()) {
 			throw new AppException(AppErrorCode.INVALID_GENDER); 
 		}

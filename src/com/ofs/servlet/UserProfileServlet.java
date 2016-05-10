@@ -22,8 +22,7 @@ public class UserProfileServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest request, HttpServletResponse respone) {
 
-		//TODO:
-	
+		//TODO:	
 	}
 
 }

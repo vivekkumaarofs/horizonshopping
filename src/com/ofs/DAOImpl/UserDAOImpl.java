@@ -146,24 +146,3 @@ public class UserDAOImpl implements UserDAO {
 
 }
 
-// while(rs.next()){ if((rs.getString("user_name").equals(username)) &&
-// rs.getString("password").equals(password)) {
-// System.out.println(rs.getString("user_type")); }
-// if((rs.getString("user_name").equals(username)) &&
-// rs.getString("password").equals(password)) {
-// System.out.println(rs.getString("user_type")); } else { throw new
-// AppException(AppErrorCode.USERNAME_AND_PASSWORD_DOESNT_EXSIST); }
-// }
-
-// while(rs.next()) {
-// if((rs.getString("user_type").equalsIgnoreCase("Admin"))) {
-// String userrole = rs.getString("user_type");
-// System.out.println(userrole);
-// } if((rs.getString("user_type").equalsIgnoreCase("User"))) {
-// String usertyps = rs.getString("user_type");
-// System.out.println(usertyps);
-// } else {
-// throw new AppException(AppErrorCode.INVALID_USERNAME_AND_PASSWORD);
-// }
-// }
-// }

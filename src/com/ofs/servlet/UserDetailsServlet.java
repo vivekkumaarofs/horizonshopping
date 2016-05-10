@@ -57,11 +57,4 @@ public class UserDetailsServlet extends HttpServlet {
 		}		
     }
 
-//    public void doPut(HttpServletRequest request, HttpServletResponse response) 
-//    throws IOException, ServletException {
-//    	/**Edit approval**/
-//    	response.setContentType("application/json");
-//    	//TODO:
-//    }
-
 }
