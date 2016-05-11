@@ -21,17 +21,17 @@ public class DAOQueries {
 			append("             ?, ?,         ").
 			append("             ?, ?, ?);     ").
 			toString(); 
-  
+
 	public final static String MODIFY_DETAILS = new StringBuilder().
-		    append("UPDATE user_info       ").
-		    append("SET    (user_name = ?, ").
-		    append("        password  = ?  ").
-		    append("        address   = ?  ").
-		    append("        city      = ?  ").
-		    append("        email_id  = ?  ").
-		    append("        pincode   = ?,)").
-		    append("WHERE   id = ? ;       ").
-		toString(); 
+			append("UPDATE user_info       ").
+			append("SET    (user_name = ?, ").
+			append("        password  = ?  ").
+			append("        address   = ?  ").
+			append("        city      = ?  ").
+			append("        email_id  = ?  ").
+			append("        pincode   = ?,)").
+			append("WHERE   id = ? ;       ").
+			toString(); 
 
 	public final static String VIEW_DETAILS = new StringBuilder().
 			append(" SELECT    user_type,id ").
@@ -39,11 +39,7 @@ public class DAOQueries {
 			append(" WHERE user_name =?     ").
 			append(" AND   password  =?;    ").
 			toString();
-	
-	public final static String DELETE_DETAILS = new StringBuilder().
-			append(" DELETE user_info   ").
-			append("      WHERE  id =?; ").
-			toString();
+
 
 	public final static String VIEW_USER_DETAILS = new StringBuilder().
 			append(" SELECT name,          ").
@@ -58,7 +54,7 @@ public class DAOQueries {
 			append(" FROM  user_info       ").
 			append(" WHERE id = ?;         ").	
 			toString();
-	
+
 	public final static String VIEW__ALL_USER_DETAILS = new StringBuilder().
 			append(" SELECT id,            ").			
 			append("        name,          ").
@@ -74,7 +70,7 @@ public class DAOQueries {
 			append("		approve        ").
 			append(" FROM  user_info;      ").
 			toString();
- 
+
 	public final static String UPDATE_USER_DETAILS = new StringBuilder().
 			append(" UPDATE user_info      ").
 			append(" SET	password =?,   ").     
@@ -90,4 +86,8 @@ public class DAOQueries {
 			append(" WHERE  id= ?;     ").
 			toString();
 
+	public final static String DELETE_DETAILS = new StringBuilder().
+			append(" DELETE user_info   ").
+			append("      WHERE  id =?; ").
+			toString();
 } 

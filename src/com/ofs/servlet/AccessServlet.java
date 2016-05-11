@@ -24,7 +24,7 @@ public class AccessServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
- 
+
 		response.setContentType("text/html");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -65,7 +65,6 @@ public class AccessServlet extends HttpServlet {
 		StringBuffer requestJSON = new StringBuffer();
 		String line = null;
 		try {
-
 			BufferedReader reader = request.getReader();
 			while ((line = reader.readLine()) != null)
 				requestJSON.append(line);

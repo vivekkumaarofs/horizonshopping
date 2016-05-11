@@ -1,6 +1,5 @@
 package com.ofs.DAOImpl;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +57,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public int updateUser(User user) throws Exception, AppException {
-		
+
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.UPDATE_USER_DETAILS);
 		ps.setString(1, user.getPassword());
@@ -94,8 +93,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public List<User> readAllUser() throws Exception, AppException {
-		
-		
+
 		List<User> userList = new ArrayList<User>();
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW__ALL_USER_DETAILS);
@@ -115,8 +113,7 @@ public class UserDAOImpl implements UserDAO {
 			user.setEmailid(resultset.getString("email_id"));
 			user.setStatus(resultset.getString("status"));
 			userList.add(user);	
-		}
-		
+		}	
 		return userList;
 	}
 
@@ -130,9 +127,8 @@ public class UserDAOImpl implements UserDAO {
 		return rowsAffected; 
 	}
 
-	
 	public void deleteUser(int id) throws Exception, AppException {
-		
+
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.DELETE_DETAILS);
 		ps.setInt(1, id);
