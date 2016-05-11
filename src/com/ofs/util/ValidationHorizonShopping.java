@@ -11,7 +11,7 @@ public class ValidationHorizonShopping {
 
 	public void validateUserDetails(User user) {
 
-		String passwordpattern= "((?=.*[@!#$%])(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,22})";
+		String passwordpattern= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
 		String emailidpattern ="^[A-Za-z0-9+_.-]+@(.+)$";
 		String namepattern ="^[A-Za-z]+";
 		
