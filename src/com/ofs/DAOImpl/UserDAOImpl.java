@@ -114,7 +114,7 @@ public class UserDAOImpl implements UserDAO {
 			user.setEmailid(resultset.getString("email_id"));
 			user.setStatus(resultset.getString("status"));
 			userList.add(user);	
-		}	
+		}
 		return userList;
 	}
 
