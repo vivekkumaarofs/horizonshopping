@@ -34,10 +34,10 @@ public class DAOQueries {
 			toString(); 
 
 	public final static String VIEW_DETAILS = new StringBuilder().
-			append(" SELECT    user_type,id ").
-			append(" FROM  user_info        ").
-			append(" WHERE user_name =?     ").
-			append(" AND   password  =?;    ").
+			append(" SELECT   status,user_type,id ").
+			append(" FROM  user_info 		      ").
+			append(" WHERE user_name =?     	  ").
+			append(" AND   password  =?;   		  ").
 			toString();
 
 

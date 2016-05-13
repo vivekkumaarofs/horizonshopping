@@ -52,6 +52,7 @@ public class UserDAOImpl implements UserDAO {
 		while (rs.next()) {
 			user.setId(rs.getInt("id"));
 			user.setUsertype(rs.getString("user_type"));
+			user.setStatus(rs.getString("status"));
 		}
 		return user;
 	}
