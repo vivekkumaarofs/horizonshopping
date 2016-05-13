@@ -1,5 +1,6 @@
 package com.ofs.DAOImpl;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +42,7 @@ public class UserDAOImpl implements UserDAO {
 		return id;
 	}
 
+	
 	public User login(String username, String password) throws Exception {
 
 		User user = new User();
@@ -140,5 +142,6 @@ public class UserDAOImpl implements UserDAO {
 		ps.executeUpdate();
 	}
 
+	
 }
 

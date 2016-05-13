@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofs.exception.AppException;
 import com.ofs.model.User;
-import com.ofs.model.UserJson;
+import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.serviceImpl.UserServiceImpl;
 import com.ofs.services.UserService;
 
@@ -30,7 +30,7 @@ public class UserDetailsServlet extends HttpServlet {
 		BufferedReader reader = request.getReader(); 
 		while((line = reader.readLine()) != null)
 			requestJSON.append(line);
-		User user = UserJson.fromJSON(requestJSON.toString(), User.class);
+		User user = HorrizonShoppingJson.fromJSON(requestJSON.toString(), User.class);
 		UserService userservice = new UserServiceImpl();
 		try {
 			userservice.addUser(user);
@@ -50,7 +50,7 @@ public class UserDetailsServlet extends HttpServlet {
 		try {
 			List<User> user;
 			user = userservice.readAllUserService();
-			String userstring = UserJson.toJSON(user);
+			String userstring = HorrizonShoppingJson.toJSON(user);
 			PrintWriter printwriter = response.getWriter();
 			printwriter.print(userstring);
 			printwriter.close();

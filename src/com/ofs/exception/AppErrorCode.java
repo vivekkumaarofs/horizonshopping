@@ -16,8 +16,15 @@ public enum AppErrorCode {
 	UNKNOWN_ERROR(300,"Unknown Error"),
 	INVALID_USERNAME_AND_PASSWORD(201,"Please Enter valid username and password"), 
 	USERNAME_AND_PASSWORD_DOESNT_EXIST(202,"Username and password doesnt Exist"),
-	UNAUTHORIZED_TO_USER(203,"Unauthorized Access");
+	UNAUTHORIZED_TO_USER(203,"Unauthorized Access"),
 	
+	INVALID_PRODUCT_NAME(111,"Please Enter product Name"), 
+	INVALID_PRODUCT_PRICE(112,"Please Enter product price"),
+	INVALID_PRODUCT_QUANTITY(113,"Please Enter product quantity"),
+
+	INVALID_CATEGORY_NAME(114,"Please Enter Category Name"),
+	INVALID_PRODUCT_DISCOUNT(115,"Please Enter Discount");
+
 	private final int code;
 	private final String message;
 	

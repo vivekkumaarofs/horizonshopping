@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofs.exception.AppException;
 
 
-public class UserJson {
+public class HorrizonShoppingJson {
 
 	private static final ObjectMapper mapper = new ObjectMapper();
 

@@ -90,4 +90,20 @@ public class DAOQueries {
 			append(" DELETE user_info   ").
 			append("      WHERE  id =?; ").
 			toString();
-} 
+
+	public final static String ADD_PRODUCT = new StringBuilder().
+			append("INSERT INTO product          ").
+			append("          (product_name,     ").	
+			append("           product_price,    ").
+			append("           product_qty,      ").
+			append("           product_discount) ").
+			append(" VALUES  ( ?, ?,             ").
+			append("           ?, ? );           ").
+			toString();
+	
+	public final static String ADD_CATEGORY = new StringBuilder().
+			append("INSERT INTO product_category ").
+			append("            (category_name)  ").
+			append(" VALUES    (?);              ").
+			toString();
+}

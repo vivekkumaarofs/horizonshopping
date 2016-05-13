@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofs.exception.AppException;
 import com.ofs.model.User;
-import com.ofs.model.UserJson;
+import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.serviceImpl.UserServiceImpl;
 import com.ofs.services.UserService;
 
@@ -35,7 +35,7 @@ public class AccessServlet extends HttpServlet {
 			User user = userservice.loginService(username, password);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			out.println(UserJson.toJSON(user));
+			out.println(HorrizonShoppingJson.toJSON(user));
 		} catch (Exception e) {
 			out.print("INVALID USERNAME AND PASSWORD");
 			System.out.println("INVALID PASSWORD");
@@ -51,7 +51,7 @@ public class AccessServlet extends HttpServlet {
 			String id = request.getParameter("id");
 			UserService userservice = new UserServiceImpl();
 			User user = userservice.readOneService(Integer.parseInt(id));
-			String userstring = UserJson.toJSON(user);
+			String userstring = HorrizonShoppingJson.toJSON(user);
 			PrintWriter printwriter = response.getWriter();
 			printwriter.print(userstring);    	
 		} catch (Exception e) {

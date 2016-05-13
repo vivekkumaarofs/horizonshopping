@@ -2,7 +2,6 @@ package com.ofs.DAO;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import com.ofs.exception.AppException;
 import com.ofs.model.User;
 
@@ -29,4 +28,5 @@ public interface UserDAO {
 	
 	/** Edit  User Approval Records **/
 	public int editApproval(User user) throws Exception, AppException;
+	
 }

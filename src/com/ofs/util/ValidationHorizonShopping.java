@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import com.ofs.exception.AppErrorCode;
 import com.ofs.exception.AppException;
+import com.ofs.model.Category;
+import com.ofs.model.Product;
 import com.ofs.model.User;
 
 
@@ -74,6 +76,39 @@ public class ValidationHorizonShopping {
 		} else if (age < 18 ) {
 			throw new AppException(AppErrorCode.INVALID_DATE_OF_BIRTH);
 		}
+	}
+	
+	
+	public void validateProduct(Product product) {
+		
+		String namePattern ="^[A-Za-z]+";
+		
+		if(product.getProductName() == null || product.getProductName().isEmpty()|| !(product.getProductName().matches(namePattern))) {
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_NAME); 
+		}
+		
+		if(product.getProductPrice() == null || product.getProductPrice().isEmpty()) {
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_PRICE); 
+		}
+		
+		if(product.getProductQty() == null || product.getProductQty().isEmpty()) {
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_QUANTITY); 
+		}
+		
+		if(product.getProductDiscount() == null || product.getProductDiscount().isEmpty()) {
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_DISCOUNT); 
+		}
+
+	}
+
+	public void validateCategory(Category category){
+		
+		String namePattern ="^[A-Za-z]+";
+
+		if(category.getCategoryName() == null || category.getCategoryName().isEmpty() || !(category.getCategoryName().matches(namePattern))){
+			throw new AppException(AppErrorCode.INVALID_CATEGORY_NAME);
+		}
+
 	}
 
 }
