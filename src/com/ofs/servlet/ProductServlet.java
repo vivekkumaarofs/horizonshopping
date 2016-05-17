@@ -3,6 +3,7 @@ package com.ofs.servlet;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,7 +52,24 @@ public class ProductServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");
-
+		List<Product> product;
+		List<Category> category;
+		ProductService productservice = new ProductServiceImpl();
+		CategoryService categoryservice = new CategoryServiceImpl();
+		try {
+			product = productservice.readAllProductService();
+			String productstring = HorrizonShoppingJson.toJSON(product);
+			
+			category = categoryservice.readAllCategoryService();
+			String categorystring = HorrizonShoppingJson.toJSON(category);
+			
+			PrintWriter printwriter = response.getWriter();
+			printwriter.print(productstring);
+			printwriter.print(categorystring);
+			printwriter.close();
+		} catch (Exception e) {
+			throw new AppException(e);
+		}
 		
 	}
 

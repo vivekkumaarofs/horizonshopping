@@ -1,7 +1,7 @@
 package com.ofs.serviceImpl;
 
 import java.sql.SQLException;
-
+import java.util.List;
 import com.ofs.DAO.ProductDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
 import com.ofs.exception.AppException;
@@ -20,5 +20,10 @@ public class ProductServiceImpl implements ProductService {
 		productdao.addProduct(product);
 	}
 
+	public List<Product> readAllProductService() throws Exception {
+		
+		ProductDAO product = new ProductDAOImpl();
+		return product.readAllProduct();
 	
+	}	
 }

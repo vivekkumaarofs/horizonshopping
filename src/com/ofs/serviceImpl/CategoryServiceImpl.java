@@ -1,6 +1,7 @@
 package com.ofs.serviceImpl;
 
 import java.sql.SQLException;
+import java.util.List;
 import com.ofs.DAO.CategoryDAO;
 import com.ofs.DAOImpl.CategoryDAOImpl;
 import com.ofs.model.Category;
@@ -15,5 +16,13 @@ public class CategoryServiceImpl implements CategoryService {
 	CategoryDAO categoryDAO = new CategoryDAOImpl();
 	validation.validateCategory(category);
 	categoryDAO.addCategory(category);
+
 	}
+	
+	public List<Category> readAllCategoryService() throws Exception{
+	
+		CategoryDAO categoryDAO = new CategoryDAOImpl();
+		return categoryDAO.readAllCategory();
+	}
+
 }
