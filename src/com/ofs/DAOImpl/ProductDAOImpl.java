@@ -4,10 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 import com.ofs.DAO.ProductDAO;
+import com.ofs.exception.AppException;
 
 
 public class ProductDAOImpl implements ProductDAO {
@@ -17,13 +22,32 @@ public class ProductDAOImpl implements ProductDAO {
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_PRODUCT,Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, product.getProductName());
-		ps.setString(2, product.getProductPrice());
-		ps.setString(3, product.getProductQty());
-		ps.setString(4, product.getProductDiscount());
+		ps.setInt(2, product.getProductPrice());
+		ps.setInt(3, product.getProductQty());
+		ps.setInt(4, product.getProductDiscount());
 		ResultSet rs = ps.getGeneratedKeys();
 		int pId = rs.getInt(1);
 		return pId;
 	}
 	
+	public List<Product> readAllProduct() throws Exception, AppException { 
+
+		List<Product> productList = new ArrayList<Product>();
+		Connection connection = DatabaseUtil.getDbCon();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_ALL_PRODUCT);
+		ResultSet resultset = ps.executeQuery();
+		while (resultset.next()) {
+			Product product = new Product();
+			Category category = new Category();
+			product.setPId(resultset.getInt("pid"));
+			category.setcID(resultset.getInt("cid"));
+			product.setProductName(resultset.getString("product_name"));
+			product.setProductPrice(resultset.getInt("product_price"));
+			product.setProductQty(resultset.getInt("product_qty"));
+			product.setProductDiscount(resultset.getInt("product_discount"));
+			productList.add(product);
+		}
+		return productList;
+	}
 
 }

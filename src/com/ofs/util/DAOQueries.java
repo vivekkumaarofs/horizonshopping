@@ -3,8 +3,8 @@ package com.ofs.util;
 public class DAOQueries {
 
 	public final static String ADD_DETAILS = new StringBuilder().
-			append("INSERT INTO user_info      ").
-			append("            (name,         ").
+			append(" INSERT INTO user_info     ").
+			append("             (name,        ").
 			append("             date_of_birth,").
 			append("             user_name,    ").
 			append("             password,     ").
@@ -15,7 +15,7 @@ public class DAOQueries {
 			append("             user_type,    ").
 			append("             email_id,     ").
 			append("             status)       ").
-			append("VALUES      (?, ?,         ").
+			append(" VALUES     (?, ?,         ").
 			append("             ?, ?,         ").
 			append("             ?, ?,         ").
 			append("             ?, ?,         ").
@@ -23,14 +23,14 @@ public class DAOQueries {
 			toString(); 
 
 	public final static String MODIFY_DETAILS = new StringBuilder().
-			append("UPDATE user_info       ").
-			append("SET    (user_name = ?, ").
-			append("        password  = ?  ").
-			append("        address   = ?  ").
-			append("        city      = ?  ").
-			append("        email_id  = ?  ").
-			append("        pincode   = ?,)").
-			append("WHERE   id = ? ;       ").
+			append(" UPDATE user_info       ").
+			append(" SET    (user_name = ?, ").
+			append("         password  = ?, ").
+			append("         address   = ?, ").
+			append("         city      = ?, ").
+			append("         email_id  = ?, ").
+			append("         pincode   = ?) ").
+			append(" WHERE   id = ? ;       ").
 			toString(); 
 
 	public final static String VIEW_DETAILS = new StringBuilder().
@@ -92,7 +92,7 @@ public class DAOQueries {
 			toString();
 
 	public final static String ADD_PRODUCT = new StringBuilder().
-			append("INSERT INTO product          ").
+			append(" INSERT INTO product          ").
 			append("          (product_name,     ").	
 			append("           product_price,    ").
 			append("           product_qty,      ").
@@ -106,4 +106,20 @@ public class DAOQueries {
 			append("            (category_name)  ").
 			append(" VALUES    (?);              ").
 			toString();
+	
+	public final static String VIEW_ALL_PRODUCT = new StringBuilder().
+			append(" SELECT pid,             ").
+			append("        product_name,    ").
+			append("        product_price,   ").
+			append("        product_qty,     ").
+			append("        product_discount ").
+			append(" FROM   product;         ").
+			toString();
+			
+	public final static String VIEW_ALL_CATEGORY = new StringBuilder().
+			append(" SELECT cid,              ").
+			append("        category_name     ").
+			append(" FROM   product_category; ").
+			toString();
+	
 }

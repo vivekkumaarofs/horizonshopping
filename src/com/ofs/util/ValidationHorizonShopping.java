@@ -83,19 +83,20 @@ public class ValidationHorizonShopping {
 		
 		String namePattern ="^[A-Za-z]+";
 		
-		if(product.getProductName() == null || product.getProductName().isEmpty()|| !(product.getProductName().matches(namePattern))) {
+		if(product.getProductName() == null || product.getProductName().isEmpty()||
+				!(product.getProductName().matches(namePattern))) {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_NAME); 
 		}
 		
-		if(product.getProductPrice() == null || product.getProductPrice().isEmpty()) {
+		if(product.getProductPrice() == 0 ) {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_PRICE); 
 		}
 		
-		if(product.getProductQty() == null || product.getProductQty().isEmpty()) {
+		if(product.getProductQty() == 0 ) {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_QUANTITY); 
 		}
 		
-		if(product.getProductDiscount() == null || product.getProductDiscount().isEmpty()) {
+		if(product.getProductDiscount()==0 ) {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_DISCOUNT); 
 		}
 

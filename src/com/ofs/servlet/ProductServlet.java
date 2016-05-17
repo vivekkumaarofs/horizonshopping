@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ofs.exception.AppException;
+import com.ofs.model.Category;
 import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.model.Product;
+import com.ofs.serviceImpl.CategoryServiceImpl;
 import com.ofs.serviceImpl.ProductServiceImpl;
+import com.ofs.services.CategoryService;
 import com.ofs.services.ProductService;
 
 
@@ -23,6 +26,7 @@ public class ProductServlet extends HttpServlet {
 		response.setContentType("application/json");
 		StringBuffer requestJson = new StringBuffer();
 		String line = null;
+
 		try {
 			BufferedReader reader = request.getReader();
 			while((line = reader.readLine()) !=null)
@@ -30,6 +34,11 @@ public class ProductServlet extends HttpServlet {
 			Product product = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);
 			ProductService productService = new ProductServiceImpl();
 			productService.addProductService(product);
+
+			Category cateogrystring = HorrizonShoppingJson.fromJSON(requestJson.toString(), Category.class);
+			CategoryService categoryservice = new CategoryServiceImpl();
+			categoryservice.addCategoryService(cateogrystring);
+
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.print("Saved successfully"); 
 			printwriter.close();
@@ -37,6 +46,13 @@ public class ProductServlet extends HttpServlet {
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
+	}
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+		response.setContentType("application/json");
+
+		
 	}
 
 }

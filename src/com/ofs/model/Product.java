@@ -4,10 +4,9 @@ public class Product {
 
 	private int pId;
 	private String productName;
-	private String productPrice;
-	private String productQty;
-	private String productDiscount;
-
+	private int productPrice;
+	private int productQty;
+	private int productDiscount;
 
 	public int getPId() {
 		return pId;
@@ -26,27 +25,27 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public String getProductPrice() {
+	public int getProductPrice() {
 		return productPrice;
 	}
 
-	public void setProductPrice(String productPrice) {
+	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}
 
-	public String getProductQty() {
+	public int getProductQty() {
 		return productQty;
 	}
 
-	public void setProductQty(String productQty) {
+	public void setProductQty(int productQty) {
 		this.productQty = productQty;
 	}
 
-	public String getProductDiscount() {
+	public int getProductDiscount() {
 		return productDiscount;
 	}
 
-	public void setProductDiscount(String productDiscount) {
+	public void setProductDiscount(int productDiscount) {
 		this.productDiscount = productDiscount;
 	}
 

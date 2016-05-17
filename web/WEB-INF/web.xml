@@ -15,6 +15,12 @@
         <servlet-class>com.ofs.servlet.UserDetailsServlet</servlet-class>       
     </servlet>
 
+    <servlet>
+        <servlet-name>Product</servlet-name>
+        <servlet-class>com.ofs.servlet.ProductServlet</servlet-class>
+    </servlet>
+
+    
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -24,7 +30,13 @@
         <servlet-name>Signup</servlet-name>
         <url-pattern>Signup</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Product</servlet-name>
+        <url-pattern>Product</url-pattern>
+    </servlet-mapping>
 
+    
 
     <!-- <context-param>
         <param-name>log4jConfigLocation</param-name>
