@@ -111,5 +111,15 @@ public class ValidationHorizonShopping {
 		}
 
 	}
+	
+	public void validateParentCategory(Category category){
+		
+		String namePattern ="^[A-Za-z]+";
+
+		if(category.getParentCategoryName() == null || category.getCategoryName().isEmpty() || !(category.getCategoryName().matches(namePattern))){
+			throw new AppException(AppErrorCode.INVALID_CATEGORY_NAME);
+		}
+
+	}
 
 }

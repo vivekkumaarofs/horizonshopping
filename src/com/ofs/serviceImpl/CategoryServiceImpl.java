@@ -25,4 +25,18 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.readAllCategory();
 	}
 
+	public void addParentCategoryService(Category category) throws SQLException, Exception{
+
+		ValidationHorizonShopping validation = new ValidationHorizonShopping();
+		validation.validateParentCategory(category);
+		CategoryDAO categoryDAO = new CategoryDAOImpl();
+		categoryDAO.addParentCategory(category);
+	}
+
+	public List<Category> readAllParentCategoryService() throws Exception{
+
+		CategoryDAO categoryDAO = new CategoryDAOImpl();
+		return categoryDAO.readAllParentCategory();
+	}
+
 }

@@ -3,6 +3,7 @@ package com.ofs.servlet;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,6 @@ public class ProductServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");
@@ -40,6 +40,9 @@ public class ProductServlet extends HttpServlet {
 			CategoryService categoryservice = new CategoryServiceImpl();
 			categoryservice.addCategoryService(cateogrystring);
 
+			Category parentcateogrystring = HorrizonShoppingJson.fromJSON(requestJson.toString(), Category.class);
+			categoryservice.addParentCategoryService(parentcateogrystring);
+
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.print("Saved successfully"); 
 			printwriter.close();
@@ -52,19 +55,20 @@ public class ProductServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");
-		List<Product> product;
+		List<Product> product = new ArrayList<Product>();
 		List<Category> category;
+		List<Category> pcategory;
 		ProductService productservice = new ProductServiceImpl();
 		CategoryService categoryservice = new CategoryServiceImpl();
 		try {
-			product = productservice.readAllProductService();
-			String productstring = HorrizonShoppingJson.toJSON(product);
-			
-			category = categoryservice.readAllCategoryService();
-			String categorystring = HorrizonShoppingJson.toJSON(category);
-			
-			PrintWriter printwriter = response.getWriter();
-			printwriter.print(productstring);
+			product = productservice.readAllProductService();	
+			category = categoryservice.readAllCategoryService();	
+			pcategory = categoryservice.readAllParentCategoryService();
+			StringBuilder jsonsstring = new StringBuilder();
+			jsonsstring.append(category.toString()).append(product.toString()).append(pcategory.toString());
+			String categorystring = HorrizonShoppingJson.toJSON(jsonsstring.toString());
+
+			PrintWriter printwriter = response.getWriter();			
 			printwriter.print(categorystring);
 			printwriter.close();
 		} catch (Exception e) {
@@ -74,3 +78,6 @@ public class ProductServlet extends HttpServlet {
 	}
 
 }
+
+//jsonsstring.append(category.get(0).getCategoryName()).append(category.get(0).getcID()).append(category.get(0).getmpId())
+//.append(category.get(0).getParentCategoryName());

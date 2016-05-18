@@ -12,4 +12,10 @@ public interface CategoryDAO {
 
 	/**View Category **/
 	public List<Category> readAllCategory() throws SQLException, Exception;
+
+	/** Add Parent Category **/
+	int addParentCategory(Category category) throws SQLException, Exception;
+	
+	/** view Parent Category **/
+	public List<Category> readAllParentCategory() throws SQLException, Exception;
 }
