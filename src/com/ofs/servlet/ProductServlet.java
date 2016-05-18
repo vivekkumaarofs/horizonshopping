@@ -1,16 +1,14 @@
 package com.ofs.servlet;
 
-
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ofs.exception.AppException;
 import com.ofs.model.Category;
 import com.ofs.model.HorrizonShoppingJson;
+import com.ofs.model.Json;
 import com.ofs.model.Product;
 import com.ofs.serviceImpl.CategoryServiceImpl;
 import com.ofs.serviceImpl.ProductServiceImpl;
@@ -21,7 +19,7 @@ import com.ofs.services.ProductService;
 public class ProductServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");
@@ -55,26 +53,16 @@ public class ProductServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");
-		List<Product> product = new ArrayList<Product>();
-		List<Category> category;
-		List<Category> pcategory;
-		ProductService productservice = new ProductServiceImpl();
-		CategoryService categoryservice = new CategoryServiceImpl();
 		try {
-			product = productservice.readAllProductService();	
-			category = categoryservice.readAllCategoryService();	
-			pcategory = categoryservice.readAllParentCategoryService();
-			StringBuilder jsonsstring = new StringBuilder();
-			jsonsstring.append(category.toString()).append(product.toString()).append(pcategory.toString());
-			String categorystring = HorrizonShoppingJson.toJSON(jsonsstring.toString());
-
+			Json  json = new Json();
+			json.getDetails();
+			String categorystring = HorrizonShoppingJson.toJSON(json);
 			PrintWriter printwriter = response.getWriter();			
 			printwriter.print(categorystring);
 			printwriter.close();
 		} catch (Exception e) {
 			throw new AppException(e);
 		}
-		
 	}
 
 }
