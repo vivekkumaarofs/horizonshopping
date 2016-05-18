@@ -2,6 +2,9 @@ package com.ofs.servlet;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,19 +53,47 @@ public class ProductServlet extends HttpServlet {
 		}
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+//	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+//
+//		response.setContentType("application/json");
+//		try {
+//			Json  json = new Json();
+//			json.getDetails();
+//			String categorystring = HorrizonShoppingJson.toJSON(json);
+//			PrintWriter printwriter = response.getWriter();			
+//			printwriter.print(categorystring);
+//			printwriter.close();
+//		} catch (Exception e) {
+//			throw new AppException(e);
+//		}
+//	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response){
+		
 		response.setContentType("application/json");
+		List<Product> product = new ArrayList<Product>();
+		List<Category> category;
+		List<Category> pcategory;
+		ProductService productservice = new ProductServiceImpl();
+		CategoryService categoryservice = new CategoryServiceImpl();
 		try {
-			Json  json = new Json();
-			json.getDetails();
-			String categorystring = HorrizonShoppingJson.toJSON(json);
+			product = productservice.readAllProductService();	
+			category = categoryservice.readAllCategoryService();	
+			pcategory = categoryservice.readAllParentCategoryService();
+			
+			String productstring = HorrizonShoppingJson.toJSON(product);
+			String categorystring = HorrizonShoppingJson.toJSON(category);
+			String parentcategorystring = HorrizonShoppingJson.toJSON(pcategory);
+
 			PrintWriter printwriter = response.getWriter();			
+			printwriter.print(productstring);
 			printwriter.print(categorystring);
+			printwriter.print(parentcategorystring);
 			printwriter.close();
 		} catch (Exception e) {
 			throw new AppException(e);
 		}
+        
 	}
 
 }
