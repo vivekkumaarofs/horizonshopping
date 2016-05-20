@@ -41,7 +41,7 @@ public class UserDetailsServlet extends HttpServlet {
 		printwriter.print("Saved successfully"); 
 		printwriter.close();
 	}
-
+ 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
 

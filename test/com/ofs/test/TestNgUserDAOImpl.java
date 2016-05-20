@@ -13,7 +13,10 @@ import org.testng.annotations.Test;
 import com.ofs.DAO.UserDAO;
 import com.ofs.DAOImpl.UserDAOImpl;
 import com.ofs.exception.AppException;
+import com.ofs.model.Category;
+import com.ofs.model.Product;
 import com.ofs.model.User;
+import com.ofs.serviceImpl.ProductServiceImpl;
 import com.ofs.serviceImpl.UserServiceImpl;
 
 public class TestNgUserDAOImpl {
@@ -156,33 +159,71 @@ public class TestNgUserDAOImpl {
 //		};
 //	}
 
-@Test(dataProvider= "sdpupdate")
-public void testcreate (String input)  {
-	
+//@Test(dataProvider= "sdpupdate")
+//public void testcreate (String input)  {
+//	
+//		try {
+//			HttpClient httpClient = new HttpClient();	
+//			httpClient.start();
+//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
+//											.content(new StringContentProvider(input))
+//												 .method(HttpMethod.PUT)
+//												 .send();
+//			System.out.println(response.getStatus());
+//			System.out.println(response); 
+//			} catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	
+//
+//	@DataProvider
+//	public Object[][] sdpupdate() {
+//		
+//		return new  Object[][] {
+//			new Object[] {"{ \" password \" : \" Pass@342 \", \" address \": \" tambaram \", \" city \": \" chennai \", \" pincode \" : 600013 , \"id\": 55 }"} 
+//		};
+//		}
+
+	@Test(dataProvider= "productadd")
+	public void testcreate (String input)  {
+		
 		try {
 			HttpClient httpClient = new HttpClient();	
 			httpClient.start();
-			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
-											.content(new StringContentProvider(input))
-												 .method(HttpMethod.PUT)
-												 .send();
-			System.out.println(response.getStatus());
-			System.out.println(response); 
+			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/Product")
+	   	    									.content(new StringContentProvider(input))
+	    										.method(HttpMethod.POST)
+												.send();
+				System.out.println(response.getStatus());
+				System.out.println(response); 
 			} catch(Exception e) {
-				e.printStackTrace();
+					e.printStackTrace();
 			}
-		}
+	}
+	//"{ \"cId\": 3 ,\" productName \" : \" HE MAN \", \" productPrice \": 200, \" productQty \": 200, \" productDiscount \" : 5 }"
 	
-
+	//new Product("HeMAN" ,200,200,5,new Category(3))
 	@DataProvider
-	public Object[][] sdpupdate() {
-		
-		return new  Object[][] {
-			new Object[] {"{ \" password \" : \" Pass@342 \", \" address \": \" tambaram \", \" city \": \" chennai \", \" pincode \" : 600013 , \"id\": 55 }"} 
-		};
-		}
-
+	public Object[][] productadd() {
+			
+			return new  Object[][] {
+				new Object[] { "{ \"cId\": 3 ,\" productName \" : \" HE MAN \", \" productPrice \": 200, \" productQty \": 200, \" productDiscount \" : 5 }" 	} 
+			};
+			}
 	
+//	@Test(dataProvider= "productadd")
+//	public void testcreate (Product p)  {
+//			try {
+//				ProductServiceImpl userimp  =new ProductServiceImpl();
+//				userimp.addProductService(p);			
+//			} catch (Exception e) {
+//				throw new AppException(e);
+//			}
+//		
+//			}
+//		
+		
 //	@Test(dataProvider= "sdpupdate")
 //	public void testcreate (User user)  {
 //		try {

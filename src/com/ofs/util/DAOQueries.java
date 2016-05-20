@@ -92,12 +92,14 @@ public class DAOQueries {
 
 	public final static String ADD_PRODUCT = new StringBuilder().
 			append(" INSERT INTO product         ").
-			append("          (product_name,     ").	
+			append("          (cid,              ").
+			append("           product_name,     ").	
 			append("           product_price,    ").
 			append("           product_qty,      ").
-			append("           product_discount) ").
-			append(" VALUES  ( ?, ?,             ").
-			append("           ?, ? );           ").
+			append("           product_discount, ").
+			append("           product_image )   ").
+			append(" VALUES  ( ?, ?, ?,          ").
+			append("           ?, ?, ? );        ").
 			toString();
 	
 	public final static String ADD_CATEGORY = new StringBuilder().
@@ -133,5 +135,5 @@ public class DAOQueries {
 			append("        category_name     ").
 			append(" FROM   product_category; ").
 			toString();
-	
+	 
 }

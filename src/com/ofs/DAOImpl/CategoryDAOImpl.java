@@ -25,7 +25,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		int cId = rs.getInt(1);
 		return cId;
 	}
-
+ 
 	public List<Category> readAllCategory() throws Exception{
 		
 		List<Category> categorylist = new ArrayList<Category>();
@@ -34,7 +34,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
 			Category category = new Category();
-			category.setcID(resultset.getInt("cid"));
+			category.setcId(resultset.getInt("cid"));
 			category.setmpId(resultset.getInt("mpId"));
 			category.setCategoryName(resultset.getString("category_name"));
 			categorylist.add(category);

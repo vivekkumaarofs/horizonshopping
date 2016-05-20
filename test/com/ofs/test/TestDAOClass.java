@@ -3,9 +3,17 @@ package com.ofs.test;
 import static org.junit.Assert.assertNotNull;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
+
+import com.ofs.DAO.ProductDAO;
 import com.ofs.DAO.UserDAO;
+import com.ofs.DAOImpl.ProductDAOImpl;
 import com.ofs.DAOImpl.UserDAOImpl;
+import com.ofs.model.Category;
+import com.ofs.model.Product;
 import com.ofs.model.User;
 
 
@@ -51,7 +59,23 @@ public class TestDAOClass {
 		assertNotNull(user);
 	}
 
-	public void testRealAllUser() throws Exception {
-		//TODO
+	@Test
+	public void testCreateProduct() throws Exception {
+
+		List<Object> listObject = new ArrayList<Object>();
+		ProductDAO product = new ProductDAOImpl();
+		Category category = new Category();
+		Product prod = new Product();
+		category.setcId(3);
+		prod.setProductName("HE MAN");
+		prod.setProductPrice(200);
+		prod.setProductQty(200);
+		prod.setProductDiscount(5);
+
+		listObject.add(category);
+		listObject.add(prod);
+
+//		int id = product.addProduct(listObject);
+//		assertNotNull(id);
 	}
 }

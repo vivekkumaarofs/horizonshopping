@@ -33,7 +33,7 @@
     
     <servlet-mapping>
         <servlet-name>Product</servlet-name>
-        <url-pattern>Product</url-pattern>
+        <url-pattern>/Product</url-pattern>
     </servlet-mapping>
 
     

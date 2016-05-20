@@ -1,10 +1,8 @@
 package com.ofs.servlet;
 
+
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,19 +11,17 @@ import com.ofs.model.Category;
 import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.model.Json;
 import com.ofs.model.Product;
-import com.ofs.serviceImpl.CategoryServiceImpl;
 import com.ofs.serviceImpl.ProductServiceImpl;
-import com.ofs.services.CategoryService;
 import com.ofs.services.ProductService;
 
 
 public class ProductServlet extends HttpServlet {
-
+	 
 	private static final long serialVersionUID = 1L;
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-		response.setContentType("application/json");
+		response.setContentType("multipart/form-data");
 		StringBuffer requestJson = new StringBuffer();
 		String line = null;
 
@@ -33,21 +29,12 @@ public class ProductServlet extends HttpServlet {
 			BufferedReader reader = request.getReader();
 			while((line = reader.readLine()) !=null)
 				requestJson.append(line);
-			Product product = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);
+			Object product = HorrizonShoppingJson.fromjson(requestJson.toString());	
 			ProductService productService = new ProductServiceImpl();
-			productService.addProductService(product);
-
-			Category cateogrystring = HorrizonShoppingJson.fromJSON(requestJson.toString(), Category.class);
-			CategoryService categoryservice = new CategoryServiceImpl();
-			categoryservice.addCategoryService(cateogrystring);
-
-			Category parentcateogrystring = HorrizonShoppingJson.fromJSON(requestJson.toString(), Category.class);
-			categoryservice.addParentCategoryService(parentcateogrystring);
-
+			productService.addProductService((Product) product);
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.print("Saved successfully"); 
 			printwriter.close();
-
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
@@ -66,36 +53,6 @@ public class ProductServlet extends HttpServlet {
 		} catch (Exception e) {
 			throw new AppException(e);
 		}
-	
-//	public void doGet(HttpServletRequest request, HttpServletResponse response){
-//		
-//		response.setContentType("application/json");
-//		List<Product> product = new ArrayList<Product>();
-//		List<Category> category;
-//		List<Category> pcategory;
-//		ProductService productservice = new ProductServiceImpl();
-//		CategoryService categoryservice = new CategoryServiceImpl();
-//		try {
-//			product = productservice.readAllProductService();	
-//			category = categoryservice.readAllCategoryService();	
-//			pcategory = categoryservice.readAllParentCategoryService();
-//			
-//			String productstring = HorrizonShoppingJson.toJSON(product);
-//			String categorystring = HorrizonShoppingJson.toJSON(category);
-//			String parentcategorystring = HorrizonShoppingJson.toJSON(pcategory);
-//
-//			PrintWriter printwriter = response.getWriter();			
-//			printwriter.print(productstring);
-//			printwriter.print(categorystring);
-//			printwriter.print(parentcategorystring);
-//			printwriter.close();
-//		} catch (Exception e) {
-//			throw new AppException(e);
-//		}
-        
 	}
 
 }
-
-//jsonsstring.append(category.get(0).getCategoryName()).append(category.get(0).getcID()).append(category.get(0).getmpId())
-//.append(category.get(0).getParentCategoryName());

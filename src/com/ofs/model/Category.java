@@ -6,13 +6,13 @@ public class Category {
 	private String CategoryName;
 	private int mpId;
 	private String parentCategoryName;
-
-	public int getcID() {
+ 
+	public int getcId() {
 		return cId;
 	}
 	
-	public void setcID(int cID) {
-		this.cId = cID;
+	public void setcId(int cId) {
+		this.cId = cId;
 	}
 	
 	public String getCategoryName() {
@@ -41,4 +41,11 @@ public class Category {
 		this.parentCategoryName = parentCategoryName;
 	}
 
+	public Category(){
+		
+	}
+
+	public Category(int cId) {
+		this.cId=cId;
+	}
 }

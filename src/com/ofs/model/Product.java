@@ -1,5 +1,7 @@
 package com.ofs.model;
 
+import java.sql.Blob;
+
 public class Product {
 
 	private int pId;
@@ -7,7 +9,22 @@ public class Product {
 	private int productPrice;
 	private int productQty;
 	private int productDiscount;
+	private Blob productImage;
+	public Category cId;
 
+	public Product(String 	productName, int productPrice, int productQty, int productDiscount, Category cId) {
+		this.productName=productName;
+		this.productPrice=productPrice;
+		this.productQty=productQty;
+		this.productDiscount=productDiscount;
+		this.cId=cId;
+		
+	}
+
+	public Product() {
+		
+	}
+	
 	public int getPId() {
 		return pId;
 	}
@@ -49,4 +66,11 @@ public class Product {
 		this.productDiscount = productDiscount;
 	}
 
+	public Blob getProductImage(){
+		return productImage;
+	}
+	
+	public void setProductImage(Blob productImage){
+		this.productImage=productImage;
+	}
 }

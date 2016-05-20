@@ -35,7 +35,7 @@ public class ValidationHorizonShopping {
 		if(user.getGender() == null || user.getGender().isEmpty()) {
 			throw new AppException(AppErrorCode.INVALID_GENDER); 
 		}
-
+ 
 		if(user.getAddress() == null || user.getAddress().isEmpty()) {
 			throw new AppException(AppErrorCode.INVALID_ADDRESS); 
 		}
