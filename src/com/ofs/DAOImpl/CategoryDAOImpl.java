@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.ofs.DAO.CategoryDAO;
-import com.ofs.model.Category;
+import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 
 public class CategoryDAOImpl implements CategoryDAO {
 
-	public int addCategory (Category category)throws Exception {
+	public int addCategory (Product category)throws Exception {
 
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_CATEGORY,Statement.RETURN_GENERATED_KEYS);
@@ -26,14 +26,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return cId;
 	}
  
-	public List<Category> readAllCategory() throws Exception{
+	public List<Product> readAllCategory() throws Exception{
 		
-		List<Category> categorylist = new ArrayList<Category>();
+		List<Product> categorylist = new ArrayList<Product>();
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_ALL_CATEGORY);
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
-			Category category = new Category();
+			Product category = new Product();
 			category.setcId(resultset.getInt("cid"));
 			category.setmpId(resultset.getInt("mpId"));
 			category.setCategoryName(resultset.getString("category_name"));
@@ -42,7 +42,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return categorylist;
 	}
 
-	public int addParentCategory(Category category) throws SQLException, Exception{
+	public int addParentCategory(Product category) throws SQLException, Exception{
 		
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_MAIN_CATEGORY,Statement.RETURN_GENERATED_KEYS);
@@ -52,14 +52,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return mpId;
 	}
 
-	public List<Category> readAllParentCategory() throws SQLException, Exception{
+	public List<Product> readAllParentCategory() throws SQLException, Exception{
 
-		List<Category> categorylist = new ArrayList<Category>();
+		List<Product> categorylist = new ArrayList<Product>();
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_ALL_MAIN_CATEGORY);
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
-			Category category = new Category();
+			Product category = new Product();
 			category.setmpId(resultset.getInt("mpId"));
 			category.setParentCategoryName(resultset.getString("parent_category_name"));
 			categorylist.add(category);

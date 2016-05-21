@@ -9,11 +9,9 @@ import java.sql.Date;
 import java.util.List;
 
 import org.testng.annotations.Test;
-
 import com.ofs.DAO.UserDAO;
 import com.ofs.DAOImpl.UserDAOImpl;
 import com.ofs.exception.AppException;
-import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.model.User;
 import com.ofs.serviceImpl.ProductServiceImpl;

@@ -92,14 +92,14 @@ public class DAOQueries {
 
 	public final static String ADD_PRODUCT = new StringBuilder().
 			append(" INSERT INTO product         ").
-			append("          (cid,              ").
+			append("          (cId,              ").
 			append("           product_name,     ").	
 			append("           product_price,    ").
 			append("           product_qty,      ").
 			append("           product_discount, ").
 			append("           product_image )   ").
 			append(" VALUES  ( ?, ?, ?,          ").
-			append("           ?, ?, ? );        ").
+			append("           ?, ?,? );           ").
 			toString();
 	
 	public final static String ADD_CATEGORY = new StringBuilder().
@@ -121,19 +121,20 @@ public class DAOQueries {
 			toString();
 
 	public final static String VIEW_ALL_PRODUCT = new StringBuilder().
-			append(" SELECT pid,             ").
-			append("        cid,             ").
+			append(" SELECT pId,             ").
+			append("        cId,             ").
 			append("        product_name,    ").
 			append("        product_price,   ").
 			append("        product_qty,     ").
 			append("        product_discount ").
+		//	append("        product_image    ").
 			append(" FROM   product;         ").
 			toString();
 
 	public final static String VIEW_ALL_CATEGORY = new StringBuilder().
-			append(" SELECT cid,mpId,         ").
+			append(" SELECT cId,mpId,         ").
 			append("        category_name     ").
 			append(" FROM   product_category; ").
 			toString();
-	 
+
 }

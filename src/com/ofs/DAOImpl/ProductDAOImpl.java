@@ -1,13 +1,12 @@
 package com.ofs.DAOImpl;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
@@ -17,14 +16,12 @@ import com.ofs.exception.AppException;
 
 public class ProductDAOImpl implements ProductDAO {
 
-	public int addProduct(Object object) throws Exception {
+	public int addProduct(Product product) throws Exception {
 		
-		Product product = new Product();
-		Category category = new Category();
+		
 		Connection connection = DatabaseUtil.getDbCon();
-//		Category category = new Category();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_PRODUCT,Statement.RETURN_GENERATED_KEYS);
-		ps.setInt(1, category.getcId());
+		ps.setInt(1, product.getcId());
 		ps.setString(2, product.getProductName());
 		ps.setInt(3, product.getProductPrice());
 		ps.setInt(4, product.getProductQty());
@@ -46,14 +43,13 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
 			Product product = new Product();
-			Category category = new Category();
 			product.setPId(resultset.getInt("pid"));
-			category.setcId(resultset.getInt("cid"));
+			product.setcId(resultset.getInt("cid"));
 			product.setProductName(resultset.getString("product_name"));
 			product.setProductPrice(resultset.getInt("product_price"));
 			product.setProductQty(resultset.getInt("product_qty"));
 			product.setProductDiscount(resultset.getInt("product_discount"));
-//			product.setImage(resultset.getBlob("product_image")); add product_image in sql queries
+			//product.setProductImage(resultset.getBlob("product_image")); 
 			productList.add(product);
 		}
 		return productList;

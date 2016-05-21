@@ -11,8 +11,8 @@ import com.ofs.services.ProductService;
 public class Json {
 
 	private List <Product> product;
-	private List<Category> category;
-	private List<Category> parentCategory;
+	private List<Product> category;
+	private List<Product> parentCategory;
 
 	public List<Object> getDetails() throws Exception {
 	
@@ -31,6 +31,6 @@ public class Json {
 		return list;
 		
 	}
-
+ 
 
 }

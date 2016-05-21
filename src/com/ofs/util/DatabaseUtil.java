@@ -14,7 +14,7 @@ public class DatabaseUtil {
         	String connectionUrl = "jdbc:mysql://localhost:3306/online_sho?user=root&password=MYsql123$";            
             String driver = "com.mysql.jdbc.Driver";
             Class.forName(driver);
-            this.connection = (Connection)DriverManager.getConnection(connectionUrl);
+            this.connection = (Connection)DriverManager.getConnection(connectionUrl);	
     }
 
     public static synchronized Connection getDbCon() throws Exception {

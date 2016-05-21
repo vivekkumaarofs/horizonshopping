@@ -1,10 +1,8 @@
 package com.ofs.util;
 
 import java.util.Calendar;
-
 import com.ofs.exception.AppErrorCode;
 import com.ofs.exception.AppException;
-import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.model.User;
 
@@ -102,7 +100,7 @@ public class ValidationHorizonShopping {
 
 	}
 
-	public void validateCategory(Category category){
+	public void validateCategory(Product category){
 		
 		String namePattern ="^[A-Za-z]+";
 
@@ -112,7 +110,7 @@ public class ValidationHorizonShopping {
 
 	}
 	
-	public void validateParentCategory(Category category){
+	public void validateParentCategory(Product category){
 		
 		String namePattern ="^[A-Za-z]+";
 

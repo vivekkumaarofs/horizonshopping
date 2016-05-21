@@ -12,7 +12,6 @@ import com.ofs.DAO.ProductDAO;
 import com.ofs.DAO.UserDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
 import com.ofs.DAOImpl.UserDAOImpl;
-import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.model.User;
 
@@ -63,16 +62,13 @@ public class TestDAOClass {
 	public void testCreateProduct() throws Exception {
 
 		List<Object> listObject = new ArrayList<Object>();
-		ProductDAO product = new ProductDAOImpl();
-		Category category = new Category();
 		Product prod = new Product();
-		category.setcId(3);
+		prod.setcId(3);
 		prod.setProductName("HE MAN");
 		prod.setProductPrice(200);
 		prod.setProductQty(200);
 		prod.setProductDiscount(5);
 
-		listObject.add(category);
 		listObject.add(prod);
 
 //		int id = product.addProduct(listObject);

@@ -5,7 +5,6 @@ import java.util.List;
 import com.ofs.DAO.ProductDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
 import com.ofs.exception.AppException;
-import com.ofs.model.Category;
 import com.ofs.model.Product;
 import com.ofs.services.ProductService;
 import com.ofs.util.ValidationHorizonShopping;
