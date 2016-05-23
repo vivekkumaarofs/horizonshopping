@@ -18,7 +18,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 	public int addProduct(Product product) throws Exception {
 		
-		
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_PRODUCT,Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, product.getcId());
@@ -26,7 +25,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ps.setInt(3, product.getProductPrice());
 		ps.setInt(4, product.getProductQty());
 		ps.setInt(5, product.getProductDiscount());
-		ps.setBlob(6, product.getProductImage());
+		ps.setBlob(6,product.getProductImage());
 		ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();

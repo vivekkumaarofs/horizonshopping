@@ -1,5 +1,6 @@
 package com.ofs.model;
 
+
 import java.sql.Blob;
 
 public class Product {
@@ -48,6 +49,7 @@ public class Product {
 	}
 
 	public int getProductDiscount() {
+		
 		return productDiscount;
 	}
 
@@ -62,6 +64,7 @@ public class Product {
 	public void setProductImage(Blob productImage){
 		this.productImage=productImage;
 	}
+
 	public Product(){}
 	
 	/**Categoroy **/
