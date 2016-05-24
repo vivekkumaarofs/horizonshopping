@@ -17,7 +17,6 @@ import com.ofs.services.ProductService;
 public class ProductServlet extends HttpServlet {
 	 
 	private static final long serialVersionUID = 1L;
-//	private static final ObjectMapper mapper = new ObjectMapper();
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
@@ -40,11 +39,6 @@ public class ProductServlet extends HttpServlet {
 		}
 	}
 
-//	private Product fromJSON(String product) throws Exception {
-//
-//		Product prod = mapper.readValue(product, Product.class);
-//		return prod;
-//	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");

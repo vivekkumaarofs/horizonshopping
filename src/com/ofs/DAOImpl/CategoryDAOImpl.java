@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.ofs.DAO.CategoryDAO;
+import com.ofs.exception.AppException;
 import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
@@ -26,7 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return cId;
 	}
  
-	public List<Product> readAllCategory() throws Exception{
+	public List<Product> readAllCategory() throws AppException,Exception{
 		
 		List<Product> categorylist = new ArrayList<Product>();
 		Connection connection = DatabaseUtil.getDbCon();

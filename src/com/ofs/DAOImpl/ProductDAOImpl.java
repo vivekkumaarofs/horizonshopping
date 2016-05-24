@@ -11,7 +11,6 @@ import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 import com.ofs.DAO.ProductDAO;
-import com.ofs.exception.AppException;
 
 
 public class ProductDAOImpl implements ProductDAO {
@@ -34,7 +33,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
-	public List<Product> readAllProduct() throws Exception, AppException { 
+	public List<Product> readAllProduct() throws Exception { 
 
 		List<Product> productList = new ArrayList<Product>();
 		Connection connection = DatabaseUtil.getDbCon();

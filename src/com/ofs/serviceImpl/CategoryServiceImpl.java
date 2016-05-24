@@ -10,18 +10,17 @@ import com.ofs.util.ValidationHorizonShopping;
 
 public class CategoryServiceImpl implements CategoryService {
 
-	public void addCategoryService(Product category) throws SQLException, Exception{
+	CategoryDAO categoryDAO = new CategoryDAOImpl();
+
+	public void addCategoryService(Product category) throws SQLException, Exception {
 		
 	ValidationHorizonShopping validation = new ValidationHorizonShopping();
-	CategoryDAO categoryDAO = new CategoryDAOImpl();
 	validation.validateCategory(category);
 	categoryDAO.addCategory(category);
 
 	}
 	
 	public List<Product> readAllCategoryService() throws Exception{
-	
-		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		return categoryDAO.readAllCategory();
 	}
 
@@ -29,13 +28,10 @@ public class CategoryServiceImpl implements CategoryService {
 
 		ValidationHorizonShopping validation = new ValidationHorizonShopping();
 		validation.validateParentCategory(category);
-		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		categoryDAO.addParentCategory(category);
 	}
 
 	public List<Product> readAllParentCategoryService() throws Exception{
-
-		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		return categoryDAO.readAllParentCategory();
 	}
 

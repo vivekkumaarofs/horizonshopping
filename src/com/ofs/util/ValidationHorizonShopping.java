@@ -47,16 +47,16 @@ public class ValidationHorizonShopping {
 			throw new AppException(AppErrorCode.INVALID_EMAILID);
 		}
 
-		validatePhonenumber(user);
+		validatePincode(user);
 	}
 
-	public void validatePhonenumber(User user) {
+	public void validatePincode(User user) {
 
 		String numberpattern = "[0-9]+";
-		int getphonenumber =  user.getPincode();
-		String sphone = Integer.toString(getphonenumber);
+		int getPincode =  user.getPincode();
+		String spincode = Integer.toString(getPincode);
 
-		if(!(sphone.matches(numberpattern)) || user.getPincode()==0 ) {
+		if(!(spincode.matches(numberpattern)) || user.getPincode()==0 ) {
 			throw new AppException(AppErrorCode.INVALID_PINCODE);
 		}
 	}
@@ -107,7 +107,8 @@ public class ValidationHorizonShopping {
 		
 		String namePattern ="^[A-Za-z]+";
 
-		if(category.getCategoryName() == null || category.getCategoryName().isEmpty() || !(category.getCategoryName().matches(namePattern))){
+		if(category.getCategoryName() == null || category.getCategoryName().isEmpty() || 
+				!(category.getCategoryName().matches(namePattern))){
 			throw new AppException(AppErrorCode.INVALID_CATEGORY_NAME);
 		}
 
@@ -117,7 +118,8 @@ public class ValidationHorizonShopping {
 		
 		String namePattern ="^[A-Za-z]+";
 
-		if(category.getParentCategoryName() == null || category.getCategoryName().isEmpty() || !(category.getCategoryName().matches(namePattern))){
+		if(category.getParentCategoryName() == null || category.getCategoryName().isEmpty() || 
+				!(category.getCategoryName().matches(namePattern))){
 			throw new AppException(AppErrorCode.INVALID_CATEGORY_NAME);
 		}
 

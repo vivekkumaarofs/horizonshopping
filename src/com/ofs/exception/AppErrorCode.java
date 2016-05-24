@@ -18,7 +18,7 @@ public enum AppErrorCode {
 	USERNAME_AND_PASSWORD_DOESNT_EXIST(202,"Username and password doesnt Exist"),
 	UNAUTHORIZED_TO_USER(203,"Unauthorized Access"),
 	
-	INVALID_PRODUCT_NAME(111,"Please Enter product Name"), 
+	INVALID_PRODUCT_NAME(111,"Please Enter valid product Name"), 
 	INVALID_PRODUCT_PRICE(112,"Please Enter product price"),
 	INVALID_PRODUCT_QUANTITY(113,"Please Enter product quantity"),
 	

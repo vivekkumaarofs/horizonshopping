@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 			if(user.getId() > 0){
 				return user;
 			} else {				
-				throw new AppException(AppErrorCode.INVALID_USERNAME_AND_PASSWORD);
+				throw new AppException(AppErrorCode.USERNAME_AND_PASSWORD_DOESNT_EXIST);
 			}
 		} catch(Exception e) {
 			throw new AppException(e);
