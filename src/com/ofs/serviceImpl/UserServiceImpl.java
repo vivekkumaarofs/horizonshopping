@@ -13,21 +13,22 @@ import com.ofs.util.ValidationHorizonShopping;
 
 public class UserServiceImpl implements UserService {
 
+	UserDAO userDaoImpl = new UserDAOImpl();
+	
 	public void addUser(User user) throws SQLException, Exception {
 
 		ValidationHorizonShopping validation = new ValidationHorizonShopping();
 		validation.validateUserDetails(user);
-		UserDAO userDaoImpl = new UserDAOImpl();
 		userDaoImpl.addUser(user);
 	}
 	
 	public User loginService(String username, String password) throws AppException {
 
 		try {
-			UserDAO userDao = new UserDAOImpl();
+		
 			User user = new User();
 			loginValidation(username,password);
-			user = userDao.login(username, password);
+			user = userDaoImpl.login(username, password);
 			if(user.getId() > 0){
 				return user;
 			} else {				
@@ -48,15 +49,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> readAllUserService() throws Exception {
-		UserDAO user = new UserDAOImpl();
-		return user.readAllUser();
+		return userDaoImpl.readAllUser();
 	}
 
 	public User readOneService(int id) throws AppException {
 
 		try {
-			UserDAO userdao = new UserDAOImpl();
-			User user = userdao.readOneUser(id);
+			User user = userDaoImpl.readOneUser(id);
 			return user;
 		} catch(Exception e) {
 			throw new AppException(e);
@@ -66,8 +65,7 @@ public class UserServiceImpl implements UserService {
 	public void updateOneUserService(User user) throws AppException {
 		
 		try {
-			UserDAO userDAO = new UserDAOImpl();
-		    userDAO.updateUser(user); 
+		    userDaoImpl.updateUser(user); 
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
@@ -76,8 +74,7 @@ public class UserServiceImpl implements UserService {
 	public void updateApprovalService(User user) throws Exception {
 
 		try {
-			UserDAO userDAO = new UserDAOImpl();
-			userDAO.editApproval(user);
+			userDaoImpl.editApproval(user);
 		} catch(Exception e) {
 			throw new AppException(e);
 		}

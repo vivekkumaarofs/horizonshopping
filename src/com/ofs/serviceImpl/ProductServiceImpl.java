@@ -12,18 +12,19 @@ import com.ofs.util.ValidationHorizonShopping;
 
 public class ProductServiceImpl implements ProductService {
 
+	ProductDAO productdao = new ProductDAOImpl();
+
 	public void addProductService(Product product)throws SQLException, AppException, Exception{
 
 		ValidationHorizonShopping validation = new ValidationHorizonShopping();
 		validation.validateProduct(product);
-		ProductDAO productdao = new ProductDAOImpl();
 		productdao.addProduct(product);
 	}
 
 	public List<Product> readAllProductService() throws Exception {
 		
-		ProductDAO product = new ProductDAOImpl();
-		return product.readAllProduct();
+		
+		return productdao.readAllProduct();
 	
 	}	
 }

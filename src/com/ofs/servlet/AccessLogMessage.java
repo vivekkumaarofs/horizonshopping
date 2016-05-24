@@ -15,7 +15,7 @@ public class AccessLogMessage {
 		public static void main(String args[]) {
 
 		try {
-		
+
 			logger.info("This is my first log4j's statement");
 			DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();

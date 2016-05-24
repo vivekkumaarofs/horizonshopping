@@ -15,7 +15,6 @@ public class User {
 	 private int    pincode;
 	 private String emailId;
 	 private String userType;
-	 private boolean approve;
 	 private String status;
 	 
 	 public User(String name, Date dateofBirth, String username, String password, 
@@ -32,23 +31,6 @@ public class User {
 		this.userType = usertype;
 		this.emailId =emailid;
 		
-	}
-
-	 public User(String name, Date dateofBirth, String username, String password, String gender, 
-			 String address, String city, int pincode, String usertype,	String emailid, boolean approve,String status ) {
-
-		this.name = name;
-		this.dateOfBirth = dateofBirth;
-		this.userName = username;
-		this.password = password;
-		this.gender = gender;
-		this.address = address;   
-		this.city = city;
-		this.pincode = pincode;
-		this.userType = usertype;
-		this.emailId = emailid;
-		this.approve = approve;
-		this.status=status;
 	}
 
 	public int getId() {
@@ -138,14 +120,6 @@ public class User {
 
 	public void setUsertype(String usertype) {
 		this.userType = usertype;
-	}
-
-	public void setApprove(boolean approve) {
-		 this.approve= approve;
-	}
-
-	public boolean getApprove() {
-			return approve;
 	}
 
 	public String getStatus() {
