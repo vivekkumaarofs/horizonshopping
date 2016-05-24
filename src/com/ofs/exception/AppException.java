@@ -7,6 +7,7 @@ extends RuntimeException {
 
 	public AppException(AppErrorCode e) {
 		e.getMessage();
+		e.getCode();
 	}
 	
 	public AppException(Throwable cause) {

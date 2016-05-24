@@ -98,6 +98,9 @@ public class ValidationHorizonShopping {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_DISCOUNT); 
 		}
 
+		if(product.getProductImage()==null) {
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_IMAGE);
+		}
 	}
 
 	public void validateCategory(Product category){

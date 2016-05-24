@@ -1,13 +1,11 @@
 package com.ofs.servlet;
 
 
-
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofs.exception.AppException;
 import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.model.Json;
@@ -19,7 +17,8 @@ import com.ofs.services.ProductService;
 public class ProductServlet extends HttpServlet {
 	 
 	private static final long serialVersionUID = 1L;
-	private static final ObjectMapper mapper = new ObjectMapper();
+//	private static final ObjectMapper mapper = new ObjectMapper();
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("multipart/form-data");
@@ -30,7 +29,7 @@ public class ProductServlet extends HttpServlet {
 			BufferedReader reader = request.getReader();
 			while((line = reader.readLine()) !=null)
 				requestJson.append(line);
-			Product product = fromJSON(requestJson.toString());	
+			Product product = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);	
 			ProductService productService = new ProductServiceImpl();
 			productService.addProductService(product);
 			PrintWriter printwriter = response.getWriter();        
@@ -41,11 +40,11 @@ public class ProductServlet extends HttpServlet {
 		}
 	}
 
-	private Product fromJSON(String product) throws Exception {
-
-		Product prod = mapper.readValue(product, Product.class);
-		return prod;
-	}
+//	private Product fromJSON(String product) throws Exception {
+//
+//		Product prod = mapper.readValue(product, Product.class);
+//		return prod;
+//	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("application/json");

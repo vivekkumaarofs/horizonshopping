@@ -21,9 +21,10 @@ public enum AppErrorCode {
 	INVALID_PRODUCT_NAME(111,"Please Enter product Name"), 
 	INVALID_PRODUCT_PRICE(112,"Please Enter product price"),
 	INVALID_PRODUCT_QUANTITY(113,"Please Enter product quantity"),
-
+	
 	INVALID_CATEGORY_NAME(114,"Please Enter Category Name"),
-	INVALID_PRODUCT_DISCOUNT(115,"Please Enter Discount");
+	INVALID_PRODUCT_DISCOUNT(115,"Please Enter Discount") ,
+	INVALID_PRODUCT_IMAGE(116,"Please upload product Image");
 
 	private final int code;
 	private final String message;

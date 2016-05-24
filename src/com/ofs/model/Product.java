@@ -1,7 +1,7 @@
 package com.ofs.model;
 
-
 import java.sql.Blob;
+
 
 public class Product {
 
@@ -49,7 +49,6 @@ public class Product {
 	}
 
 	public int getProductDiscount() {
-		
 		return productDiscount;
 	}
 
@@ -67,7 +66,7 @@ public class Product {
 
 	public Product(){}
 	
-	/**Categoroy **/
+	/** Categoroy **/
 	public int getcId() {
 		return cId;
 	}
@@ -92,7 +91,6 @@ public class Product {
 	public void setmpId(int mpId) {
 		this.mpId = mpId;
 	}
-	
 	
 	public String getParentCategoryName() {
 		return parentCategoryName;
