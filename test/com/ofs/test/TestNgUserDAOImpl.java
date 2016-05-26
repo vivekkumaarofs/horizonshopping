@@ -120,24 +120,24 @@ public class TestNgUserDAOImpl {
 //		}
 //	}
 
-//	@Test
-//	public void testLogin() {
-//
-//		try {
-//
-//			HttpClient httpClient = new HttpClient();
-//			httpClient.start();
-//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
-//			         							 .param("username", "vivek234")
-//			         							 .param("password", "password")
-//			         							 .method(HttpMethod.POST)
-//			         							 .send();
-//			log(response.getStatus());
-//			log(response);
-//		} catch (Exception e) {
-//			throw new AppException(e);
-//		}
-//	}
+	@Test
+	public void testLogin() {
+
+		try {
+
+			HttpClient httpClient = new HttpClient();
+			httpClient.start();
+			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
+			         							 .param("username", "vivek234")
+			         							 .param("password", "pass123")
+			         							 .method(HttpMethod.POST)
+			         							 .send();
+			log(response.getStatus());
+			log(response);
+		} catch (Exception e) {
+			throw new AppException(e);
+		}
+	}
 
 //	@Test(dataProvider = "sdpCreate")	
 //	public void testCreate(String a , String b) {
@@ -183,32 +183,31 @@ public class TestNgUserDAOImpl {
 //		};
 //		}
 
-	@Test(dataProvider= "productadd")
-	public void testcreate (String input)  {
-		
-		try {
-			HttpClient httpClient = new HttpClient();	
-			httpClient.start();
-			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/Product")
-	   	    									.content(new StringContentProvider(input))
-	    										.method(HttpMethod.POST)
-												.send();
-				System.out.println(response.getStatus());
-				System.out.println(response); 
-			} catch(Exception e) {
-					e.printStackTrace();
-			}
-	}
+//	@Test(dataProvider= "productadd")
+//	public void testcreate (String input)  {
+//		
+//		try {
+//			HttpClient httpClient = new HttpClient();	
+//			httpClient.start();
+//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/Product")
+//	   	    									.content(new StringContentProvider(input))
+//	    										.method(HttpMethod.POST)
+//												.send();
+//				System.out.println(response.getStatus());
+//				System.out.println(response); 
+//			} catch(Exception e) {
+//					e.printStackTrace();
+//			}
+//	}
 	//"{ \"cId\": 3 ,\" productName \" : \" HE MAN \", \" productPrice \": 200, \" productQty \": 200, \" productDiscount \" : 5 }"
 	
 	//new Product("HeMAN" ,200,200,5,new Category(3))
-	@DataProvider
-	public Object[][] productadd() {
-			
-			return new  Object[][] {
-				new Object[] { "{ \"cId\": 3 ,\" productName \" : \" HE MAN \", \" productPrice \": 200, \" productQty \": 200, \" productDiscount \" : 5 }" 	} 
-			};
-			}
+//	@DataProvider
+//	public Object[][] productadd() {
+//		return new  Object[][] {
+//			new Object[] { "{ \"cId\": 3 ,\" productName \" : \" HE MAN \", \" productPrice \": 200, \" productQty \": 200, \" productDiscount \" : 5 }" 	} 
+//		};
+//	}
 	
 //	@Test(dataProvider= "productadd")
 //	public void testcreate (Product p)  {

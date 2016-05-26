@@ -126,8 +126,8 @@ public class DAOQueries {
 			append("        product_name,    ").
 			append("        product_price,   ").
 			append("        product_qty,     ").
-			append("        product_discount ").
-		//	append("        product_image    ").
+			append("        product_discount,").
+			append("        product_image    ").
 			append(" FROM   product;         ").
 			toString();
 

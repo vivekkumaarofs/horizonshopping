@@ -1,6 +1,7 @@
 package com.ofs.DAOImpl;
 
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import com.ofs.model.Product;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 import com.ofs.DAO.ProductDAO;
-
+import javax.sql.rowset.serial.SerialBlob;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -24,7 +25,9 @@ public class ProductDAOImpl implements ProductDAO {
 		ps.setInt(3, product.getProductPrice());
 		ps.setInt(4, product.getProductQty());
 		ps.setInt(5, product.getProductDiscount());
-		ps.setBlob(6,product.getProductImage());
+		byte [] productImage = product.getProductImage();
+		Blob blob = new SerialBlob(productImage);
+		ps.setBlob(6,blob);
 		ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();
@@ -47,7 +50,8 @@ public class ProductDAOImpl implements ProductDAO {
 			product.setProductPrice(resultset.getInt("product_price"));
 			product.setProductQty(resultset.getInt("product_qty"));
 			product.setProductDiscount(resultset.getInt("product_discount"));
-			//product.setProductImage(resultset.getBlob("product_image")); 
+			byte[] productimage =resultset.getBytes("product_image");
+			product.setProductImage(productimage); 
 			productList.add(product);
 		}
 		return productList;

@@ -1,5 +1,6 @@
 package com.ofs.model;
 
+import java.io.ByteArrayInputStream;
 import java.sql.Blob;
 
 
@@ -10,11 +11,14 @@ public class Product {
 	private int productPrice;
 	private int productQty;
 	private int productDiscount;
-	private Blob productImage;
+//	private byte[] byteArray;
 	public int cId;
 	private String CategoryName;
 	private int mpId;
 	private String parentCategoryName;
+	private byte[] ProductImage;
+
+//	ByteArrayInputStream productImage = new ByteArrayInputStream(byteArray);
 
 	public int getPId() {
 		return pId;
@@ -56,13 +60,13 @@ public class Product {
 		this.productDiscount = productDiscount;
 	}
 
-	public Blob getProductImage(){
-		return productImage;
-	}
-	
-	public void setProductImage(Blob productImage){
-		this.productImage=productImage;
-	}
+//	public ByteArrayInputStream getProductImage(){
+//		return productImage;
+//	}
+//	
+//	public void setProductImage(ByteArrayInputStream productImage){
+//		this.productImage=productImage;
+//	}
 
 	public Product(){}
 	
@@ -99,5 +103,18 @@ public class Product {
 	public void setParentCategoryName(String parentCategoryName) {
 		this.parentCategoryName = parentCategoryName;
 	}
+
+	public byte[] getProductImage() {
+		return ProductImage;
+	}
+
+	public void setProductImage(byte[] productImage){
+		this.ProductImage=productImage;
+	}
+	
+//	private Blob productImage;
+//	public void setbProductImage(Blob productImage) {
+//		this.productImage = productImage;
+//	}
 
 }
