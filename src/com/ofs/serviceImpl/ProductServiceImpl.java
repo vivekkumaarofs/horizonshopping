@@ -1,6 +1,6 @@
 package com.ofs.serviceImpl;
 
-import java.sql.SQLException;
+
 import java.util.List;
 import com.ofs.DAO.ProductDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
@@ -13,10 +13,11 @@ import com.ofs.util.ValidationHorizonShopping;
 public class ProductServiceImpl implements ProductService {
 
 	ProductDAO productdao = new ProductDAOImpl();
+	ValidationHorizonShopping validation = new ValidationHorizonShopping();
 
-	public void addProductService(Product product)throws SQLException, AppException, Exception{
+	public void addProductService(Product product)throws AppException,Exception{
 
-		ValidationHorizonShopping validation = new ValidationHorizonShopping();
+	
 		validation.validateProduct(product);
 		productdao.addProduct(product);
 	}
@@ -26,5 +27,11 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productdao.readAllProduct();
 	
-	}	
+	}
+	
+	public void addShoppingCartService(Product shoppingcart) throws AppException,Exception{
+
+		validation.validateShoppingCart(shoppingcart);
+		productdao.addShoppingCart(shoppingcart);
+	}
 }

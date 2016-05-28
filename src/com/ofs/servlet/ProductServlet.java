@@ -32,7 +32,6 @@ public class ProductServlet extends HttpServlet {
 			ProductService productService = new ProductServiceImpl();
 			productService.addProductService(product);
 			PrintWriter printwriter = response.getWriter();        
-			printwriter.print("Saved successfully"); 
 			printwriter.close();
 		} catch(Exception e) {
 			throw new AppException(e);
@@ -53,5 +52,6 @@ public class ProductServlet extends HttpServlet {
 			throw new AppException(e);
 		}
 	}
+
 
 }

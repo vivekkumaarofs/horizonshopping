@@ -13,6 +13,7 @@ public enum AppErrorCode {
 	INVALID_PINCODE(108,"Please Enter pincode"),
 	INVALID_EMAILID(109,"Please Enter valid Email-id"),
 	DETAILS_NOT_FOUND(110,"Sorry Details not found"),
+	INVALID_USER_ID (111,"Please enter valid ID"),
 	UNKNOWN_ERROR(300,"Unknown Error"),
 	INVALID_USERNAME_AND_PASSWORD(201,"Please Enter valid username and password"), 
 	USERNAME_AND_PASSWORD_DOESNT_EXIST(202,"Username and password doesnt Exist"),
@@ -21,10 +22,14 @@ public enum AppErrorCode {
 	INVALID_PRODUCT_NAME(111,"Please Enter valid product Name"), 
 	INVALID_PRODUCT_PRICE(112,"Please Enter product price"),
 	INVALID_PRODUCT_QUANTITY(113,"Please Enter product quantity"),
+	 INVALID_PRODUCT_ID(114,"Please Enter valid product Id"),
 	
 	INVALID_CATEGORY_NAME(114,"Please Enter Category Name"),
 	INVALID_PRODUCT_DISCOUNT(115,"Please Enter Discount") ,
-	INVALID_PRODUCT_IMAGE(116,"Please upload product Image");
+	INVALID_PRODUCT_IMAGE(116,"Please upload product Image"), 
+	
+	 INVALID_TOTAL_COUNT(118,"Invalid total count"),
+	 INVALID_PRODUCT_COUNT(117,"Please enter valid product count");
 
 	private final int code;
 	private final String message;

@@ -12,7 +12,10 @@ public class Product {
 	private int mpId;
 	private String parentCategoryName;
 	private byte[] ProductImage;
-
+	private int cartId;
+	private int productCount;
+	private int totalCount;
+	
 	public int getPId() {
 		return pId;
 	}
@@ -95,6 +98,31 @@ public class Product {
 
 	public void setProductImage(byte[] productImage){
 		this.ProductImage=productImage;
+	}
+
+	/**shopping cart **/
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+
+	public int getProductCount() {
+		return productCount;
+	}
+
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 
 }

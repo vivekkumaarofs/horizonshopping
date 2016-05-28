@@ -8,8 +8,11 @@ import com.ofs.model.Product;
 public interface ProductDAO {
 
 	/**Add Product **/ 
-	int addProduct(Product product) throws  AppException, Exception;
+	int addProduct(Product product) throws  Exception;
 
 	/**VIEW Product **/
 	public List<Product> readAllProduct() throws AppException, Exception;
+
+	/** Add Shopping Cart **/
+	public int addShoppingCart(Product shoppingcart) throws Exception;
 }

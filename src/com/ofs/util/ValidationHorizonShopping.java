@@ -103,6 +103,22 @@ public class ValidationHorizonShopping {
 		}
 	}
 
+	public void validateShoppingCart (Product shoppingCart){
+		
+		User user = new User();
+		if (user.getId()==0) {
+			throw new AppException(AppErrorCode.INVALID_USER_ID);
+		}
+		if (shoppingCart.getPId()==0){
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_ID);
+		}
+		if (shoppingCart.getProductCount()==0){
+			throw new AppException(AppErrorCode.INVALID_PRODUCT_COUNT);
+		}
+		if(shoppingCart.getTotalCount()==0){
+			throw new AppException(AppErrorCode.INVALID_TOTAL_COUNT);
+		}
+	}
 	public void validateCategory(Product category){
 		
 		String namePattern ="^[A-Za-z]+";

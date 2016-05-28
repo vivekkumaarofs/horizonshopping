@@ -1,23 +1,27 @@
 package com.ofs.DAOImpl;
 
+
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Base64;
+//import java.util.Base64;
 import java.util.List;
 import com.ofs.model.Product;
+import com.ofs.model.User;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 import com.ofs.DAO.ProductDAO;
+import com.ofs.exception.AppException;
+
 import javax.sql.rowset.serial.SerialBlob;
 
 
 public class ProductDAOImpl implements ProductDAO {
 
-	public int addProduct(Product product) throws Exception {
+	public int addProduct(Product product) throws Exception, AppException {
 
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_PRODUCT,Statement.RETURN_GENERATED_KEYS);
@@ -59,4 +63,18 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList;
 	}
 
+	public int addShoppingCart(Product shoppingcart) throws Exception {
+	
+		Connection connection = DatabaseUtil.getDbCon();
+		User user = new User();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_SHOPPING_CART,Statement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, user.getId());
+		ps.setInt(2, shoppingcart.getPId());
+		ps.setInt(3, shoppingcart.getProductCount());
+		ps.setInt(4, shoppingcart.getTotalCount());
+		ResultSet rs = ps.getGeneratedKeys();
+		rs.next();
+		int sId = rs.getInt(1);
+		return sId;
+	}
 }
