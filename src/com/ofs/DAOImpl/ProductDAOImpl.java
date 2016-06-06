@@ -10,7 +10,6 @@ import java.util.ArrayList;
 //import java.util.Base64;
 import java.util.List;
 import com.ofs.model.Product;
-import com.ofs.model.User;
 import com.ofs.util.DAOQueries;
 import com.ofs.util.DatabaseUtil;
 import com.ofs.DAO.ProductDAO;
@@ -49,7 +48,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
 			Product product = new Product();
-			product.setPId(resultset.getInt("pid"));
+			product.setpId(resultset.getInt("pid"));
 			product.setcId(resultset.getInt("cid"));
 			product.setProductName(resultset.getString("product_name"));
 			product.setProductPrice(resultset.getInt("product_price"));
@@ -66,15 +65,16 @@ public class ProductDAOImpl implements ProductDAO {
 	public int addShoppingCart(Product shoppingcart) throws Exception {
 	
 		Connection connection = DatabaseUtil.getDbCon();
-		User user = new User();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_SHOPPING_CART,Statement.RETURN_GENERATED_KEYS);
-		ps.setInt(1, user.getId());
-		ps.setInt(2, shoppingcart.getPId());
+		ps.setInt(1, shoppingcart.id);
+		ps.setInt(2, shoppingcart.getpId());
 		ps.setInt(3, shoppingcart.getProductCount());
-		ps.setInt(4, shoppingcart.getTotalCount());
+		ps.setInt(4, shoppingcart.getTotalAmount());
+		ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();
 		int sId = rs.getInt(1);
 		return sId;
 	}
+
 }

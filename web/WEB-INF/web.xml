@@ -20,6 +20,17 @@
         <servlet-class>com.ofs.servlet.ProductServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>UserProfile</servlet-name>
+        <servlet-class>com.ofs.servlet.UserProfileServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>UserProfile</servlet-name>
+        <url-pattern>UserProfile</url-pattern>
+    
+    </servlet-mapping>
+    
     
     <servlet-mapping>
         <servlet-name>Login</servlet-name>

@@ -2,6 +2,8 @@ package com.ofs.model;
 
 public class Product {
 
+	User user = new User();
+
 	private int pId;
 	private String productName;
 	private int productPrice;
@@ -14,13 +16,16 @@ public class Product {
 	private byte[] ProductImage;
 	private int cartId;
 	private int productCount;
-	private int totalCount;
+	private int totalAmount;
+
+	public int id = user.getId();
 	
-	public int getPId() {
+
+	public int getpId() {
 		return pId;
 	}
 
-	public void setPId(int pId) {
+	public void setpId(int pId) {
 		this.pId = pId;
 	}	
 
@@ -117,12 +122,12 @@ public class Product {
 		this.productCount = productCount;
 	}
 
-	public int getTotalCount() {
-		return totalCount;
+	public int getTotalAmount() {
+		return totalAmount;
 	}
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
+	public void setTotalAmount(int totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
 }

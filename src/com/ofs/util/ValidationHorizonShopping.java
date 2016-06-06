@@ -105,17 +105,17 @@ public class ValidationHorizonShopping {
 
 	public void validateShoppingCart (Product shoppingCart){
 		
-		User user = new User();
-		if (user.getId()==0) {
+		
+		if (shoppingCart.id==0) {
 			throw new AppException(AppErrorCode.INVALID_USER_ID);
 		}
-		if (shoppingCart.getPId()==0){
+		if (shoppingCart.getpId()==0){
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_ID);
 		}
 		if (shoppingCart.getProductCount()==0){
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_COUNT);
 		}
-		if(shoppingCart.getTotalCount()==0){
+		if(shoppingCart.getTotalAmount()==0){
 			throw new AppException(AppErrorCode.INVALID_TOTAL_COUNT);
 		}
 	}
