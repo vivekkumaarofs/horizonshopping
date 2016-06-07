@@ -1,5 +1,7 @@
 package com.ofs.model;
 
+import java.sql.Timestamp;
+
 public class Product {
 
 	User user = new User();
@@ -17,6 +19,7 @@ public class Product {
 	private int cartId;
 	private int productCount;
 	private int totalAmount;
+	
 
 	public int id = user.getId();
 	

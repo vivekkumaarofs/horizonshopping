@@ -37,16 +37,15 @@ public class UserProfileServlet extends HttpServlet{
 			shoppingCartService.addShoppingCartService(shoppingcart);
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.close();
-	
+
 		} catch (Exception e){
 			throw new AppException(e);
 		}
-
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse respone) {
 
-		//TODO:	
+		//TODO:
 	}
 
 }

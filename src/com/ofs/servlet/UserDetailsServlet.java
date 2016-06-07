@@ -24,6 +24,23 @@ public class UserDetailsServlet extends HttpServlet {
 	private static final ObjectMapper mapper = new ObjectMapper();
 	private String line= null;
 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws IOException, ServletException {
+		
+		response.setContentType("application/json");
+		UserService userservice = new UserServiceImpl();
+		try {
+			List<User> user;
+			user = userservice.readAllUserService();
+			String userstring = HorrizonShoppingJson.toJSON(user);
+			PrintWriter printwriter = response.getWriter();
+			printwriter.print(userstring);
+			printwriter.close();
+		} catch (Exception e) {
+			throw new AppException(e);
+		}		
+	}
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		StringBuffer requestJSON = new StringBuffer();
@@ -42,22 +59,6 @@ public class UserDetailsServlet extends HttpServlet {
 		printwriter.close();
 	}
  
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException, ServletException {
-
-		response.setContentType("application/json");
-		UserService userservice = new UserServiceImpl();
-		try {
-			List<User> user;
-			user = userservice.readAllUserService();
-			String userstring = HorrizonShoppingJson.toJSON(user);
-			PrintWriter printwriter = response.getWriter();
-			printwriter.print(userstring);
-			printwriter.close();
-		} catch (Exception e) {
-			throw new AppException(e);
-		}		
-	}
 
 	public void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {

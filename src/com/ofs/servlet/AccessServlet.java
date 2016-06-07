@@ -22,6 +22,22 @@ public class AccessServlet extends HttpServlet {
 	private static final long serialVersionUID = -4536912329600357460L;
 	private static final ObjectMapper mapper = new ObjectMapper();
 
+	public void doGet (HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		
+		response.setContentType("application/json");    
+		try {
+			String id = request.getParameter("id");
+			UserService userservice = new UserServiceImpl();
+			User user = userservice.readOneService(Integer.parseInt(id));
+			String userstring = HorrizonShoppingJson.toJSON(user);
+			PrintWriter printwriter = response.getWriter();
+			printwriter.print(userstring);    	
+		} catch (Exception e) {
+			throw new AppException(e);
+		}
+	}
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
 
@@ -43,21 +59,6 @@ public class AccessServlet extends HttpServlet {
 		}
 	}
 
-	public void doGet (HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-
-		response.setContentType("application/json");    
-		try {
-			String id = request.getParameter("id");
-			UserService userservice = new UserServiceImpl();
-			User user = userservice.readOneService(Integer.parseInt(id));
-			String userstring = HorrizonShoppingJson.toJSON(user);
-			PrintWriter printwriter = response.getWriter();
-			printwriter.print(userstring);    	
-		} catch (Exception e) {
-			throw new AppException(e);
-		}
-	}
 
 	public void doPut(HttpServletRequest request,HttpServletResponse response) { 
 

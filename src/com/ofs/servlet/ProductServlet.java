@@ -18,6 +18,21 @@ public class ProductServlet extends HttpServlet {
 	 
 	private static final long serialVersionUID = 1L;
 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+		
+		response.setContentType("application/json");
+		try {
+			Json  json = new Json();
+			json.getDetails();
+			String categorystring = HorrizonShoppingJson.toJSON(json);
+			PrintWriter printwriter = response.getWriter();			
+			printwriter.print(categorystring);
+			printwriter.close();
+		} catch (Exception e) {
+			throw new AppException(e);
+		}
+	}
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		response.setContentType("multipart/form-data");
@@ -38,20 +53,6 @@ public class ProductServlet extends HttpServlet {
 		}
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-		response.setContentType("application/json");
-		try {
-			Json  json = new Json();
-			json.getDetails();
-			String categorystring = HorrizonShoppingJson.toJSON(json);
-			PrintWriter printwriter = response.getWriter();			
-			printwriter.print(categorystring);
-			printwriter.close();
-		} catch (Exception e) {
-			throw new AppException(e);
-		}
-	}
 
 
 }
