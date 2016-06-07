@@ -77,4 +77,22 @@ public class ProductDAOImpl implements ProductDAO {
 		return sId;
 	}
 
+	public List<Product>readAllShoppingCart() throws Exception {
+
+		Connection connection = DatabaseUtil.getDbCon();
+		List<Product> shoppingCartList = new ArrayList<Product>();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_ALL_SHOPPING_CART);
+		ResultSet resultset = ps.executeQuery();
+		while (resultset.next()) {
+			Product shoppingcart = new Product();
+			shoppingcart.setCartId(resultset.getInt("cart_id"));
+			shoppingcart.setpId(resultset.getInt("pId"));
+			shoppingcart.setProductCount(resultset.getInt("product_count"));
+			shoppingcart.setTotalAmount(resultset.getInt("total_amount"));
+			shoppingcart.setOrderDate(resultset.getTimestamp("order_date"));
+			shoppingCartList.add(shoppingcart);
+		}
+		return shoppingCartList;
+	}
+
 }

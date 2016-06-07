@@ -19,11 +19,13 @@ public class Product {
 	private int cartId;
 	private int productCount;
 	private int totalAmount;
-	
+	private Timestamp OrderDate;
 
 	public int id = user.getId();
-	
 
+	
+	
+	
 	public int getpId() {
 		return pId;
 	}
@@ -133,4 +135,12 @@ public class Product {
 		this.totalAmount = totalAmount;
 	}
 
+	public Timestamp getOrderDate() {
+		return OrderDate;
+	}
+	
+	public void setOrderDate(Timestamp OrderDate){
+		this.OrderDate=OrderDate;
+	}
+	
 }
