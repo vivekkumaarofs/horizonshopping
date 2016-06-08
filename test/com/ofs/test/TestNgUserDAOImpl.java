@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.util.List;
 import org.testng.annotations.Test;
 import com.ofs.DAO.UserDAO;
+import com.ofs.DAOImpl.ProductDAOImpl;
 import com.ofs.DAOImpl.UserDAOImpl;
 import com.ofs.exception.AppException;
 import com.ofs.model.Product;
@@ -48,7 +49,19 @@ public class TestNgUserDAOImpl {
 //		}
 //	}
 
-//	@Test
+	@Test
+	public void testreadall() {
+		try {
+			ProductDAOImpl userimpl = new ProductDAOImpl();
+			userimpl.readAllShoppingCart();
+
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
+	}
+	
+	
+	//	@Test
 //	public void readOneuser() {
 //		try {
 //			UserDAOImpl userimpl = new UserDAOImpl();
@@ -119,24 +132,24 @@ public class TestNgUserDAOImpl {
 //		}
 //	}
 
-	@Test
-	public void testLogin() {
-
-		try {
-
-			HttpClient httpClient = new HttpClient();
-			httpClient.start();
-			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
-			         							 .param("username", "vivek234")
-			         							 .param("password", "pass123")
-			         							 .method(HttpMethod.POST)
-			         							 .send();
-			log(response.getStatus());
-			log(response);
-		} catch (Exception e) {
-			throw new AppException(e);
-		}
-	}
+//	@Test
+//	public void testLogin() {
+//
+//		try {
+//
+//			HttpClient httpClient = new HttpClient();
+//			httpClient.start();
+//			ContentResponse response = httpClient.newRequest("http://localhost:8080/horizon/login")
+//			         							 .param("username", "vivek234")
+//			         							 .param("password", "pass123")
+//			         							 .method(HttpMethod.POST)
+//			         							 .send();
+//			log(response.getStatus());
+//			log(response);
+//		} catch (Exception e) {
+//			throw new AppException(e);
+//		}
+//	}
 
 //	@Test(dataProvider = "sdpCreate")	
 //	public void testCreate(String a , String b) {

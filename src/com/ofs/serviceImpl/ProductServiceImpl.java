@@ -22,16 +22,17 @@ public class ProductServiceImpl implements ProductService {
 		productdao.addProduct(product);
 	}
 
-	public List<Product> readAllProductService() throws Exception {
-		
-		
+	public List<Product> readAllProductService() throws Exception {	
 		return productdao.readAllProduct();
-	
 	}
 	
 	public void addShoppingCartService(Product shoppingcart) throws AppException,Exception{
 
 		validation.validateShoppingCart(shoppingcart);
 		productdao.addShoppingCart(shoppingcart);
+	}
+	
+	public List<Product> readAllShoppingCartService() throws Exception{
+		return productdao.readAllShoppingCart();
 	}
 }

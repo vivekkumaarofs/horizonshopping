@@ -12,4 +12,6 @@ public interface ProductService {
 	public List<Product> readAllProductService() throws Exception;
 	
 	void addShoppingCartService(Product shoppingcart) throws AppException,Exception;
+	
+	public List<Product> readAllShoppingCartService() throws Exception;
 }

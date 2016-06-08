@@ -16,7 +16,6 @@ import com.ofs.serviceImpl.ProductServiceImpl;
 import com.ofs.services.ProductService;
 
 
-
 public class UserProfileServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;

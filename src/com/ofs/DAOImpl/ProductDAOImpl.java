@@ -87,6 +87,7 @@ public class ProductDAOImpl implements ProductDAO {
 			Product shoppingcart = new Product();
 			shoppingcart.setCartId(resultset.getInt("cart_id"));
 			shoppingcart.setpId(resultset.getInt("pId"));
+			shoppingcart.id = (resultset.getInt("id"));
 			shoppingcart.setProductCount(resultset.getInt("product_count"));
 			shoppingcart.setTotalAmount(resultset.getInt("total_amount"));
 			shoppingcart.setOrderDate(resultset.getTimestamp("order_date"));

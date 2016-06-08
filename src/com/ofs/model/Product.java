@@ -23,9 +23,6 @@ public class Product {
 
 	public int id = user.getId();
 
-	
-	
-	
 	public int getpId() {
 		return pId;
 	}
