@@ -160,4 +160,18 @@ public class DAOQueries {
 			append("      WHERE  id =?; ").
 			toString();
 
+	public final static String VIEW_ONE_SHOPPING_CART = new StringBuilder().
+			append(" SELECT shop_cart.product_count, ").
+			append("        shop_cart.total_amount,  ").
+			append("        product.product_name,    ").	
+			append("        product_price    ").
+			append(" FROM   shop_cart    			").
+			append(" JOIN   product ON    			").
+			append("        shop_cart.cart_id =      ").
+			append("        product.pId              ").
+			append(" WHERE  shop_cart.id= ?;         ").
+			toString();
+	
+//		select shop_cart.product_count, shop_cart.total_amount,product.product_name,product.product_price from shop_cart 
+//	join product  on shop_cart.cart_id = product.pId where shop_cart.id=62;
 }

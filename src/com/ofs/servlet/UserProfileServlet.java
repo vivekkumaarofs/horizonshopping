@@ -3,12 +3,11 @@ package com.ofs.servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.ofs.exception.AppException;
 import com.ofs.model.HorrizonShoppingJson;
 import com.ofs.model.Product;
@@ -42,9 +41,21 @@ public class UserProfileServlet extends HttpServlet{
 		}
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse respone) {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
-		//TODO:
+//		response.setContentType("appication/json");
+		String requestid = request.getParameter("id");
+		ProductService shoppingcart = new ProductServiceImpl();
+		try {
+			List<Product> shopcart = shoppingcart.readOneShoppingCartService(Integer.parseInt(requestid));
+			String shopcartstring = HorrizonShoppingJson.toJSON(shopcart);
+	        PrintWriter pw = response.getWriter();
+	        pw.print(shopcartstring);
+	        pw.close();
+
+		} catch (Exception e) {
+			throw new AppException(e);
+		}
 	}
 
 }

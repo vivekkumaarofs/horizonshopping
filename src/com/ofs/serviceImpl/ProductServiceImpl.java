@@ -17,7 +17,6 @@ public class ProductServiceImpl implements ProductService {
 
 	public void addProductService(Product product)throws AppException,Exception{
 
-	
 		validation.validateProduct(product);
 		productdao.addProduct(product);
 	}
@@ -26,13 +25,17 @@ public class ProductServiceImpl implements ProductService {
 		return productdao.readAllProduct();
 	}
 	
-	public void addShoppingCartService(Product shoppingcart) throws AppException,Exception{
+	public void addShoppingCartService(Product shoppingcart) throws AppException,Exception {
 
 		validation.validateShoppingCart(shoppingcart);
 		productdao.addShoppingCart(shoppingcart);
 	}
 	
-	public List<Product> readAllShoppingCartService() throws Exception{
+	public List<Product> readAllShoppingCartService() throws Exception {
 		return productdao.readAllShoppingCart();
+	}
+	
+	public List<Product> readOneShoppingCartService(int id) throws Exception {
+		return productdao.readOneShoppingCart(id);
 	}
 }

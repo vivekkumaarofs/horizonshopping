@@ -14,4 +14,7 @@ public interface ProductService {
 	void addShoppingCartService(Product shoppingcart) throws AppException,Exception;
 	
 	public List<Product> readAllShoppingCartService() throws Exception;
+
+	public List<Product> readOneShoppingCartService(int id) throws Exception;	
+
 }

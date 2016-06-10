@@ -96,4 +96,22 @@ public class ProductDAOImpl implements ProductDAO {
 		return shoppingCartList;
 	}
 
+	public List<Product> readOneShoppingCart(int id) throws Exception {
+
+		Connection connection = DatabaseUtil.getDbCon();
+		List<Product> shopcartlist= new ArrayList<Product>();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_ONE_SHOPPING_CART);
+		ps.setInt(1, id);
+		ResultSet resultset = ps.executeQuery();
+		while(resultset.next()) {
+			Product shopCart = new Product();
+			shopCart.setProductCount(resultset.getInt("shop_cart.product_count"));
+			shopCart.setTotalAmount(resultset.getInt("shop_cart.total_amount"));
+			shopCart.setProductName(resultset.getString("product.product_name"));
+			shopCart.setProductPrice(resultset.getInt("product.product_price"));		
+			shopcartlist.add(shopCart);
+		}
+		return shopcartlist;
+	}
+
 }

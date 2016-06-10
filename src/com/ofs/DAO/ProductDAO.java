@@ -16,6 +16,9 @@ public interface ProductDAO {
 	/** Add Shopping Cart **/
 	public int addShoppingCart(Product shoppingcart) throws Exception;
 	
-	/**View Shopping Cart **/
+	/**View Shopping Cart List**/
 	public List<Product>readAllShoppingCart() throws Exception;
+
+	/**View One Shopping Cart Details**/
+	public List<Product> readOneShoppingCart(int id) throws Exception;
 }
