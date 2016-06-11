@@ -43,7 +43,7 @@ public class UserProfileServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
-//		response.setContentType("appication/json");
+		response.setContentType("appication/json");
 		String requestid = request.getParameter("id");
 		ProductService shoppingcart = new ProductServiceImpl();
 		try {
@@ -58,4 +58,14 @@ public class UserProfileServlet extends HttpServlet{
 		}
 	}
 
+	public void doDelete(HttpServletRequest request, HttpServletResponse response){
+		
+		String requestid = request.getParameter("id");
+		ProductService shoppingcart = new ProductServiceImpl();
+		try {
+			shoppingcart.deleteShoppingCartService(Integer.parseInt(requestid));
+		}  catch (Exception e) {
+			throw new AppException(e);
+		}
+	}
 }

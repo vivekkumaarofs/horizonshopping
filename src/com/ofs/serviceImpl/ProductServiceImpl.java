@@ -2,8 +2,10 @@ package com.ofs.serviceImpl;
 
 
 import java.util.List;
+
 import com.ofs.DAO.ProductDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
+import com.ofs.exception.AppErrorCode;
 import com.ofs.exception.AppException;
 import com.ofs.model.Product;
 import com.ofs.services.ProductService;
@@ -38,4 +40,14 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> readOneShoppingCartService(int id) throws Exception {
 		return productdao.readOneShoppingCart(id);
 	}
+	
+	public void deleteShoppingCartService(int id)throws Exception{
+		
+		if (!(productdao.deleteOneShoppingCart(id) == 1)) {
+			throw new AppException(AppErrorCode.SHOPPING_CART_DETAILS_NOT_FOUND);
+		} else {
+		productdao.deleteOneShoppingCart(id);
+		}
+	}
 }
+

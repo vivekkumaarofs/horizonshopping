@@ -59,10 +59,10 @@ public class DAOQueries {
 
 	public final static String UPDATE_USER_DETAILS = new StringBuilder().
 			append(" UPDATE user_info      ").
-			append(" SET	password =?,   ").     
-			append("		address =?,    ").      
-			append("		city =?,       ").      
-			append("		pincode =?     ").      
+			append(" SET	password =?,   ").
+			append("		address =?,    ").
+			append("		city =?,       ").
+			append("		pincode =?     ").
 			append(" WHERE id = ?;         ").
 			toString();
 
@@ -76,6 +76,12 @@ public class DAOQueries {
 			append("         pincode   = ?) ").
 			append(" WHERE   id = ? ;       ").
 			toString(); 
+
+	public final static String MODIFY_SHOPPING_CART = new StringBuilder().
+			append(" UPDATE shop_cart       ").
+			append(" SET    product_count=? ").
+			append(" WHERE  pId=?;          ").
+			toString();
 
 	public static final String USER_APPROVAL = new StringBuilder().
 			append(" UPDATE user_info  ").
@@ -155,19 +161,20 @@ public class DAOQueries {
 			append(" FROM shop_cart;		").
 			toString();
 
-	public final static String DELETE_DETAILS = new StringBuilder().
-			append(" DELETE user_info   ").
-			append("      WHERE  id =?; ").
+	public final static String DELETE_SHOPPING_CART = new StringBuilder().
+			append(" DELETE FROM  shop_cart ").
+			append("        WHERE  id =?;   ").
 			toString();
 
 	public final static String VIEW_ONE_SHOPPING_CART = new StringBuilder().
-			append(" SELECT shop_cart.product_count, ").
+			append(" SELECT shop_cart.cart_id,       ").
+			append("        shop_cart.product_count, ").
 			append("        shop_cart.total_amount,  ").
 			append("        product.product_name,    ").	
-			append("        product_price    ").
-			append(" FROM   shop_cart    			").
-			append(" JOIN   product ON    			").
-			append("        shop_cart.cart_id =      ").
+			append("        product_price            ").
+			append(" FROM   shop_cart    			 ").
+			append(" JOIN   product ON    		     ").
+			append("        shop_cart.pId =          ").
 			append("        product.pId              ").
 			append(" WHERE  shop_cart.id= ?;         ").
 			toString();

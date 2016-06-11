@@ -29,7 +29,8 @@ public enum AppErrorCode {
 	INVALID_PRODUCT_IMAGE(116,"Please upload product Image"), 
 	
 	 INVALID_TOTAL_COUNT(118,"Invalid total count"),
-	 INVALID_PRODUCT_COUNT(117,"Please enter valid product count");
+	 INVALID_PRODUCT_COUNT(117,"Please enter valid product count"), 
+	 SHOPPING_CART_DETAILS_NOT_FOUND(119,"Details not found");
 
 	private final int code;
 	private final String message;

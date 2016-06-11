@@ -133,7 +133,7 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteUser(int id) throws Exception, AppException {
 
 		Connection connection = DatabaseUtil.getDbCon();
-		PreparedStatement ps = connection.prepareStatement(DAOQueries.DELETE_DETAILS);
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.DELETE_SHOPPING_CART);
 		ps.setInt(1, id);
 		int rowsAffected = ps.executeUpdate();
 		if (!(rowsAffected == 1)) {
@@ -142,6 +142,6 @@ public class UserDAOImpl implements UserDAO {
 		ps.executeUpdate();
 	}
 
-	
+
 }
 

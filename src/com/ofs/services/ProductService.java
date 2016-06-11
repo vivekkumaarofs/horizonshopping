@@ -17,4 +17,5 @@ public interface ProductService {
 
 	public List<Product> readOneShoppingCartService(int id) throws Exception;	
 
+	public void deleteShoppingCartService(int id)throws Exception;
 }

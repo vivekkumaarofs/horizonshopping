@@ -105,6 +105,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet resultset = ps.executeQuery();
 		while(resultset.next()) {
 			Product shopCart = new Product();
+			shopCart.setCartId(resultset.getInt("shop_cart.cart_id "));
 			shopCart.setProductCount(resultset.getInt("shop_cart.product_count"));
 			shopCart.setTotalAmount(resultset.getInt("shop_cart.total_amount"));
 			shopCart.setProductName(resultset.getString("product.product_name"));
@@ -114,4 +115,12 @@ public class ProductDAOImpl implements ProductDAO {
 		return shopcartlist;
 	}
 
+	public int deleteOneShoppingCart(int id) throws Exception {
+
+		Connection connection = DatabaseUtil.getDbCon();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.DELETE_SHOPPING_CART);
+		ps.setInt(1, id);
+		int rowsAffected  = ps.executeUpdate();
+		return rowsAffected;
+	}
 }
