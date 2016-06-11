@@ -16,7 +16,7 @@ public class Product {
 	private int mpId;
 	private String parentCategoryName;
 	private byte[] ProductImage;
-	private int cartId;
+	private int CartId;
 	private int productCount;
 	private int totalAmount;
 	private Timestamp OrderDate;
@@ -109,11 +109,11 @@ public class Product {
 
 	/**shopping cart **/
 	public int getCartId() {
-		return cartId;
+		return CartId;
 	}
 
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setCartId(int CartId) {
+		this.CartId = CartId;
 	}
 
 	public int getProductCount() {
