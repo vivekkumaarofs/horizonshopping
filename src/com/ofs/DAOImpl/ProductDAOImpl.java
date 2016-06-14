@@ -1,6 +1,5 @@
 package com.ofs.DAOImpl;
 
-
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,11 +26,12 @@ public class ProductDAOImpl implements ProductDAO {
 		ps.setInt(1, product.getcId());
 		ps.setString(2, product.getProductName());
 		ps.setInt(3, product.getProductPrice());
-		ps.setInt(4, product.getProductQty());
+		ps.setInt(4, product.getProductQty());	
 		ps.setInt(5, product.getProductDiscount());
+		ps.setDouble(6, product.getDiscountprice());
 		byte [] productImage = product.getProductImage();
 		Blob blob = new SerialBlob(productImage);
-		ps.setBlob(6,blob);
+		ps.setBlob(7,blob);
 		ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();
@@ -52,6 +52,7 @@ public class ProductDAOImpl implements ProductDAO {
 			product.setcId(resultset.getInt("cid"));
 			product.setProductName(resultset.getString("product_name"));
 			product.setProductPrice(resultset.getInt("product_price"));
+			product.setDiscountPrice(resultset.getDouble("discount_price"));
 			product.setProductQty(resultset.getInt("product_qty"));
 			product.setProductDiscount(resultset.getInt("product_discount"));	
 			byte[] productimage =resultset.getBytes("product_image");
@@ -85,7 +86,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet resultset = ps.executeQuery();
 		while (resultset.next()) {
 			Product shoppingcart = new Product();
-			shoppingcart.setCartId(resultset.getInt("cart_id"));
+			shoppingcart.setcartId(resultset.getInt("cart_id"));
 			shoppingcart.setpId(resultset.getInt("pId"));
 			shoppingcart.id = (resultset.getInt("id"));
 			shoppingcart.setProductCount(resultset.getInt("product_count"));
@@ -105,8 +106,9 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet resultset = ps.executeQuery();
 		while(resultset.next()) {
 			Product shopCart = new Product();
-			shopCart.setCartId(resultset.getInt("shop_cart.cart_id "));
 			shopCart.setProductCount(resultset.getInt("shop_cart.product_count"));
+			shopCart.setcartId(resultset.getInt("shop_cart.cart_id"));
+			shopCart.setpId(resultset.getInt("shop_cart.pId"));
 			shopCart.setTotalAmount(resultset.getInt("shop_cart.total_amount"));
 			shopCart.setProductName(resultset.getString("product.product_name"));
 			shopCart.setProductPrice(resultset.getInt("product.product_price"));		
@@ -115,12 +117,28 @@ public class ProductDAOImpl implements ProductDAO {
 		return shopcartlist;
 	}
 
-	public int deleteOneShoppingCart(int id) throws Exception {
+	public int deleteOneShoppingCart(Product product) throws Exception {
 
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.DELETE_SHOPPING_CART);
-		ps.setInt(1, id);
+		ps.setInt(1, product.id);
+		ps.setInt(2, product.getpId());
 		int rowsAffected  = ps.executeUpdate();
 		return rowsAffected;
 	}
+
+	public int updateOneShoppingCart(Product shoppingCart) throws Exception {
+
+		Connection connection = DatabaseUtil.getDbCon();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.MODIFY_SHOPPING_CART);
+		ps.setInt(1, shoppingCart.getProductCount());
+		ps.setInt(2, shoppingCart.getpId());
+		ps.setInt(3, shoppingCart.id);
+		int rowsAffected = ps.executeUpdate();
+		return rowsAffected;
+	}
+
+	
+
+	
 }

@@ -18,20 +18,19 @@ import com.ofs.services.ProductService;
 public class UserProfileServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	ProductService shoppingCartService = new ProductServiceImpl();
+	StringBuffer requestJson = new StringBuffer();
+	String line = null;
 
 	public void doPost (HttpServletRequest request, HttpServletResponse response) 
      throws IOException, ServletException {
 
 		response.setContentType("multipart/form-data");
-		StringBuffer requestJson = new StringBuffer();
-		String line = null;
-
 		try {
 			BufferedReader reader = request.getReader();
 			while((line = reader.readLine()) !=null)
 				requestJson.append(line);
 			Product shoppingcart = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);	
-			ProductService shoppingCartService = new ProductServiceImpl();
 			shoppingCartService.addShoppingCartService(shoppingcart);
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.close();
@@ -45,9 +44,9 @@ public class UserProfileServlet extends HttpServlet{
 
 		response.setContentType("appication/json");
 		String requestid = request.getParameter("id");
-		ProductService shoppingcart = new ProductServiceImpl();
+		
 		try {
-			List<Product> shopcart = shoppingcart.readOneShoppingCartService(Integer.parseInt(requestid));
+			List<Product> shopcart = shoppingCartService.readOneShoppingCartService(Integer.parseInt(requestid));
 			String shopcartstring = HorrizonShoppingJson.toJSON(shopcart);
 	        PrintWriter pw = response.getWriter();
 	        pw.print(shopcartstring);
@@ -58,14 +57,34 @@ public class UserProfileServlet extends HttpServlet{
 		}
 	}
 
-	public void doDelete(HttpServletRequest request, HttpServletResponse response){
-		
-		String requestid = request.getParameter("id");
-		ProductService shoppingcart = new ProductServiceImpl();
+	public void doDelete(HttpServletRequest request, HttpServletResponse response) {
+
+		response.setContentType("application/json");
 		try {
-			shoppingcart.deleteShoppingCartService(Integer.parseInt(requestid));
+			BufferedReader reader = request.getReader();
+			while((line = reader.readLine()) != null){
+				requestJson.append(line);
+			}
+			Product product = HorrizonShoppingJson.fromJSON(requestJson.toString(),Product.class); 
+			shoppingCartService.deleteShoppingCartService(product);
 		}  catch (Exception e) {
 			throw new AppException(e);
 		}
 	}
+	
+	public void doPut(HttpServletRequest request, HttpServletResponse response) {
+
+		response.setContentType("application/json");
+		try {
+			BufferedReader reader = request.getReader();
+			while((line = reader.readLine())!=null){
+				requestJson.append(line);
+			}
+			Product shoppingCart = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);
+			shoppingCartService.updateShoppingCartService(shoppingCart);
+		}catch(Exception e) {
+			throw new AppException(e);
+		}
+	}
+
 }

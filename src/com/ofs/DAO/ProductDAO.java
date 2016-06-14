@@ -23,5 +23,8 @@ public interface ProductDAO {
 	public List<Product> readOneShoppingCart(int id) throws Exception;
 
 	/**Delete one Shopping Cart Detail**/
-	public int deleteOneShoppingCart(int id) throws Exception; 
+	public int deleteOneShoppingCart(Product product) throws Exception; 
+	
+	/**Update(one shopping) one Shopping Cart Detail **/
+	public int updateOneShoppingCart(Product product) throws Exception; 
 }

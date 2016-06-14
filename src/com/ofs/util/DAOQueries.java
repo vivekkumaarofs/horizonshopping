@@ -29,9 +29,10 @@ public class DAOQueries {
 			append("           product_price,    ").
 			append("           product_qty,      ").
 			append("           product_discount, ").
+			append("           discount_price,   ").
 			append("           product_image )   ").
 			append(" VALUES  ( ?, ?, ?,          ").
-			append("           ?, ?,? );           ").
+			append("           ?, ?,?,? );           ").
 			toString();
 	
 	public final static String ADD_CATEGORY = new StringBuilder().
@@ -78,9 +79,9 @@ public class DAOQueries {
 			toString(); 
 
 	public final static String MODIFY_SHOPPING_CART = new StringBuilder().
-			append(" UPDATE shop_cart       ").
-			append(" SET    product_count=? ").
-			append(" WHERE  pId=?;          ").
+			append(" UPDATE shop_cart           ").
+			append(" SET    product_count = ?   ").
+			append(" WHERE  pId = ? and id = ?; ").
 			toString();
 
 	public static final String USER_APPROVAL = new StringBuilder().
@@ -140,6 +141,7 @@ public class DAOQueries {
 			append("        product_price,   ").
 			append("        product_qty,     ").
 			append("        product_discount,").
+			append("		discount_price,  ").
 			append("        product_image    ").
 			append(" FROM   product;         ").
 			toString();
@@ -163,12 +165,14 @@ public class DAOQueries {
 
 	public final static String DELETE_SHOPPING_CART = new StringBuilder().
 			append(" DELETE FROM  shop_cart ").
-			append("        WHERE  id =?;   ").
+			append("        WHERE  id =?    ").
+			append("        and    pId= ?;  ").
 			toString();
 
 	public final static String VIEW_ONE_SHOPPING_CART = new StringBuilder().
-			append(" SELECT shop_cart.cart_id,       ").
-			append("        shop_cart.product_count, ").
+			append(" SELECT shop_cart.product_count, ").
+			append("        shop_cart.pId,           ").
+			append("        shop_cart.cart_id,       ").
 			append("        shop_cart.total_amount,  ").
 			append("        product.product_name,    ").	
 			append("        product_price            ").
@@ -179,6 +183,4 @@ public class DAOQueries {
 			append(" WHERE  shop_cart.id= ?;         ").
 			toString();
 	
-//		select shop_cart.product_count, shop_cart.total_amount,product.product_name,product.product_price from shop_cart 
-//	join product  on shop_cart.cart_id = product.pId where shop_cart.id=62;
 }

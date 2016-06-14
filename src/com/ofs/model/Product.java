@@ -5,23 +5,26 @@ import java.sql.Timestamp;
 public class Product {
 
 	User user = new User();
-
+	
 	private int pId;
 	private String productName;
 	private int productPrice;
 	private int productQty;
 	private int productDiscount;
+	private double discountPrice;
 	public int cId;
+	
 	private String CategoryName;
 	private int mpId;
 	private String parentCategoryName;
 	private byte[] ProductImage;
-	private int CartId;
+	private int cartId;
 	private int productCount;
 	private int totalAmount;
 	private Timestamp OrderDate;
 
 	public int id = user.getId();
+
 
 	public int getpId() {
 		return pId;
@@ -53,6 +56,14 @@ public class Product {
 
 	public void setProductQty(int productQty) {
 		this.productQty = productQty;
+	}
+
+	public void setDiscountPrice(double discountPrice){
+		this.discountPrice = discountPrice;
+	}
+	
+	public double getDiscountprice() {
+		return discountPrice;
 	}
 
 	public int getProductDiscount() {
@@ -108,12 +119,12 @@ public class Product {
 	}
 
 	/**shopping cart **/
-	public int getCartId() {
-		return CartId;
+	public int getcartId() {
+		return cartId;
 	}
 
-	public void setCartId(int CartId) {
-		this.CartId = CartId;
+	public void setcartId(int cartId) {
+		this.cartId = cartId;
 	}
 
 	public int getProductCount() {

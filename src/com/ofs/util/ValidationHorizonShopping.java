@@ -79,7 +79,7 @@ public class ValidationHorizonShopping {
 	
 	public void validateProduct(Product product) {
 		
-		String namePattern ="^[A-Za-z]+";
+		String namePattern ="^[a-zA-Z0-9]*$";
 		
 		if(product.getProductName() == null || product.getProductName().isEmpty()||
 				!(product.getProductName().matches(namePattern))) {
@@ -98,6 +98,9 @@ public class ValidationHorizonShopping {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_DISCOUNT); 
 		}
 
+		if(product.getDiscountprice()==0){
+			throw new AppException(AppErrorCode.INVALID_DISCOUNT_PRICE);
+		}
 		if(product.getProductImage()==null) {
 			throw new AppException(AppErrorCode.INVALID_PRODUCT_IMAGE);
 		}
