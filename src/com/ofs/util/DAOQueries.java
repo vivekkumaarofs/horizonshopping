@@ -80,7 +80,8 @@ public class DAOQueries {
 
 	public final static String MODIFY_SHOPPING_CART = new StringBuilder().
 			append(" UPDATE shop_cart           ").
-			append(" SET    product_count = ?   ").
+			append(" SET    product_count = ?,  ").
+			append("        total_amount = ?    ").
 			append(" WHERE  pId = ? and id = ?; ").
 			toString();
 

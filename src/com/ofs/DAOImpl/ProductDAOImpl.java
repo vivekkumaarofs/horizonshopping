@@ -132,13 +132,11 @@ public class ProductDAOImpl implements ProductDAO {
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.MODIFY_SHOPPING_CART);
 		ps.setInt(1, shoppingCart.getProductCount());
-		ps.setInt(2, shoppingCart.getpId());
-		ps.setInt(3, shoppingCart.id);
+		ps.setInt(2, shoppingCart.getTotalAmount());
+		ps.setInt(3, shoppingCart.getpId());
+		ps.setInt(4, shoppingCart.id);
 		int rowsAffected = ps.executeUpdate();
 		return rowsAffected;
 	}
 
-	
-
-	
 }
