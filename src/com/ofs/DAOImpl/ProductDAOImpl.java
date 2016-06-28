@@ -55,7 +55,8 @@ public class ProductDAOImpl implements ProductDAO {
 			product.setDiscountPrice(resultset.getDouble("discount_price"));
 			product.setProductQty(resultset.getInt("product_qty"));
 			product.setProductDiscount(resultset.getInt("product_discount"));	
-			byte[] productimage =resultset.getBytes("product_image");
+			byte[] productimage = new byte[Byte.MAX_VALUE];
+			productimage = resultset.getBytes("product_image");		
 			//String decoded = new String(Base64.getDecoder().decode(productimage));
 			product.setProductImage(productimage); 
 			productList.add(product);

@@ -27,7 +27,7 @@ public class Json {
 		category = categoryservice.readAllCategoryService();
 		parentCategory = categoryservice.readAllParentCategoryService();
 		shoppingCart = shoppingcartservice.readAllShoppingCartService();
-		
+
 		list.add(product);
 		list.add(category);
 		list.add(parentCategory);

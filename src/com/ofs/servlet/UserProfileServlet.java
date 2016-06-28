@@ -34,7 +34,6 @@ public class UserProfileServlet extends HttpServlet{
 			shoppingCartService.addShoppingCartService(shoppingcart);
 			PrintWriter printwriter = response.getWriter();        
 			printwriter.close();
-
 		} catch (Exception e){
 			throw new AppException(e);
 		}
