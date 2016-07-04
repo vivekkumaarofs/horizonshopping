@@ -15,6 +15,9 @@ public interface ProductDAO {
 
 	/** Add Shopping Cart **/
 	public int addShoppingCart(Product shoppingcart) throws Exception;
+
+	/** Add Main Category **/
+	public int addMainCategory(Product category)throws AppException,Exception;
 	
 	/**View Shopping Cart List**/
 	public List<Product>readAllShoppingCart() throws Exception;
@@ -27,4 +30,7 @@ public interface ProductDAO {
 	
 	/**Update(one shopping) one Shopping Cart Detail **/
 	public int updateOneShoppingCart(Product product) throws Exception; 
+
+	/**View All purchasing Order of User**/
+	public List<Product> purchaseOrder() throws Exception,AppException;
 }

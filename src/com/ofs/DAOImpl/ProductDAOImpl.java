@@ -79,6 +79,18 @@ public class ProductDAOImpl implements ProductDAO {
 		return sId;
 	}
 
+	public int addMainCategory(Product category)throws AppException,Exception{
+
+		Connection connection = DatabaseUtil.getDbCon();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_MAIN_CATEGORY,Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, category.getParentCategoryName());
+		ps.executeUpdate();
+		ResultSet rs = ps.getGeneratedKeys();
+		rs.next();
+		int cId = rs.getInt(1);
+		return cId;
+	}
+
 	public List<Product>readAllShoppingCart() throws Exception {
 
 		Connection connection = DatabaseUtil.getDbCon();
@@ -138,6 +150,30 @@ public class ProductDAOImpl implements ProductDAO {
 		ps.setInt(4, shoppingCart.id);
 		int rowsAffected = ps.executeUpdate();
 		return rowsAffected;
+	}
+
+	public List<Product> purchaseOrder() throws Exception,AppException{
+
+		Connection connection = DatabaseUtil.getDbCon();
+		List<Product> purchaseOrderList = new ArrayList<Product>();
+		PreparedStatement ps = connection.prepareStatement(DAOQueries.VIEW_PURCHASE_ORDER);
+		ResultSet resultset = ps.executeQuery();
+		while(resultset.next()) {
+		Product purchaseOrder = new Product();
+			purchaseOrder.id = resultset.getInt("user_info.id");
+			purchaseOrder.userName = resultset.getString("user_info.name");
+			purchaseOrder.gender = resultset.getString("user_info.gender");
+			purchaseOrder.address = resultset.getString("user_info.address");
+			purchaseOrder.city = resultset.getString("user_info.city");
+			purchaseOrder.pincode = resultset.getInt("user_info.pincode");
+			purchaseOrder.setCategoryName(resultset.getString("product_category.category_name"));
+			purchaseOrder.setProductName(resultset.getString("product.product_name"));
+			purchaseOrder.setProductCount(resultset.getInt("shop_cart.product_count"));
+			purchaseOrder.setTotalAmount(resultset.getInt("shop_cart.total_amount"));
+			purchaseOrder.setOrderDate(resultset.getTimestamp("shop_cart.order_date"));
+			purchaseOrderList.add(purchaseOrder);
+		}
+		return purchaseOrderList;
 	}
 
 }

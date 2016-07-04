@@ -31,7 +31,9 @@ public enum AppErrorCode {
 	
 	 INVALID_TOTAL_COUNT(118,"Invalid total count"),
 	 INVALID_PRODUCT_COUNT(117,"Please enter valid product count"), 
-	 SHOPPING_CART_DETAILS_NOT_FOUND(119,"Details not found"), ;
+	 SHOPPING_CART_DETAILS_NOT_FOUND(119,"Details not found"),
+
+	 INVALID_PARENT_CATEGORY_NAME(120,"Please enter valid product name") ;
 
 	private final int code;
 	private final String message;

@@ -25,10 +25,16 @@
         <servlet-class>com.ofs.servlet.UserProfileServlet</servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>HmsServlet</servlet-name>
+        <servlet-class>com.ofs.servlet.HmsServlet</servlet-class>
+    </servlet>
+    
+    
+    
     <servlet-mapping>
         <servlet-name>UserProfile</servlet-name>
         <url-pattern>/UserProfile</url-pattern>
-    
     </servlet-mapping>
     
     
@@ -47,6 +53,10 @@
         <url-pattern>/Product</url-pattern>
     </servlet-mapping>
   
+    <servlet-mapping>
+        <servlet-name>HmsServlet</servlet-name>
+        <url-pattern>/HmsServlet</url-pattern>
+    </servlet-mapping>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
         <param-value>/log4j.xml</param-value>

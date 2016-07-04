@@ -144,4 +144,14 @@ public class ValidationHorizonShopping {
 
 	}
 
+	public void validateMainCategory(Product category){
+
+		String namePattern ="^[A-Za-z]+";
+
+		if(category.getParentCategoryName()==null|| category.getParentCategoryName().isEmpty() ||
+				!(category.getParentCategoryName().matches(namePattern))) {
+			throw new AppException(AppErrorCode.INVALID_PARENT_CATEGORY_NAME);
+		}
+	}
+
 }

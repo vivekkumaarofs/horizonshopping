@@ -44,7 +44,7 @@ public class DAOQueries {
 	public final static String ADD_MAIN_CATEGORY = new StringBuilder().
 			append(" INSERT INTO product_main_category ").
 			append("            (parent_category_name) ").
-			append(" VALUES     (?);                   ").
+			append(" VALUES     ( ? );                 ").
 			toString();
 	
 
@@ -171,17 +171,46 @@ public class DAOQueries {
 			toString();
 
 	public final static String VIEW_ONE_SHOPPING_CART = new StringBuilder().
-			append(" SELECT shop_cart.product_count, ").
-			append("        shop_cart.pId,           ").
-			append("        shop_cart.cart_id,       ").
-			append("        shop_cart.total_amount,  ").
-			append("        product.product_name,    ").	
-			append("        product_price            ").
-			append(" FROM   shop_cart    			 ").
-			append(" JOIN   product ON    		     ").
-			append("        shop_cart.pId =          ").
-			append("        product.pId              ").
-			append(" WHERE  shop_cart.id= ?;         ").
+			append(" SELECT 					 			").
+			append(" 	shop_cart.product_count, 			").
+			append("    shop_cart.pId,           			").
+			append("    shop_cart.cart_id,       			").
+			append("    shop_cart.total_amount,  			").
+			append("    product.product_name,    			").	
+			append("    product_price            			").
+			append(" FROM 									").
+			append("    shop_cart    			 			").
+			append(" JOIN  									").
+			append(" 	product 						  	").
+			append("       ON shop_cart.pId = product.pId   ").
+			append(" WHERE  shop_cart.id= ?;                ").
 			toString();
 	
+	public final static String VIEW_PURCHASE_ORDER = new StringBuilder().
+			append(" SELECT										 ").
+			append("    user_info.id,                            ").
+			append("    user_info.name,                          ").
+			append("    user_info.gender,                        ").
+			append("    user_info.address,                       ").
+			append("    user_info.city,                          ").
+			append("    user_info.pincode,                       ").
+			append("    product_category.category_name,          ").
+			append("    product.product_name,                    ").
+			append("    shop_cart.product_count,                 ").
+			append("    shop_cart.total_amount,                  ").
+			append("    shop_cart.order_date                     ").
+			append(" FROM                                        ").
+			append("    shop_cart                                ").
+			append(" JOIN                                        ").
+			append("    user_info                                ").
+			append("       ON shop_cart.id = user_info.id        ").
+			append(" JOIN                                        ").
+			append("    product                                  ").
+			append("       ON shop_cart.pId = product.pId        ").
+			append(" JOIN                                        ").
+			append("    product_category                         ").
+			append("       ON product_category.cId = product.cId ").
+			append(" ORDER BY                                    ").
+			append("    user_info.id;                            ").
+			toString();
 }

@@ -24,7 +24,11 @@ public class Product {
 	private Timestamp OrderDate;
 
 	public int id = user.getId();
-
+	public String userName = user.getName();
+	public String gender = user.getGender();
+	public String address = user.getAddress();
+	public String city = user.getCity();
+	public int pincode = user.getPincode();
 
 	public int getpId() {
 		return pId;

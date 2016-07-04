@@ -5,6 +5,7 @@ package com.ofs.serviceImpl;
 import java.util.List;
 import com.ofs.DAO.ProductDAO;
 import com.ofs.DAOImpl.ProductDAOImpl;
+import com.ofs.exception.AppErrorCode;
 import com.ofs.exception.AppException;
 import com.ofs.model.Product;
 import com.ofs.services.ProductService;
@@ -20,6 +21,12 @@ public class ProductServiceImpl implements ProductService {
 
 		validation.validateProduct(product);
 		productdao.addProduct(product);
+	}
+
+	public void addMainCategoryService(Product category)throws AppException,Exception{
+		validation.validateParentCategory(category);
+		productdao.addMainCategory(category);
+
 	}
 
 	public List<Product> readAllProductService() throws Exception {	
@@ -49,5 +56,12 @@ public class ProductServiceImpl implements ProductService {
 		productdao.updateOneShoppingCart(shoppingCart);
 	}
 
+	public List<Product> viewPurchaseOrderService() throws AppException, Exception {
+		if(productdao.purchaseOrder().isEmpty()){
+			throw new AppException(AppErrorCode.DETAILS_NOT_FOUND);
+		} else {
+			return productdao.purchaseOrder();
+		}
+	}
 }
 
