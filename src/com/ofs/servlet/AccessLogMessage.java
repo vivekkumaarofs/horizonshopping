@@ -14,7 +14,7 @@ public class AccessLogMessage {
 
 	
 	private static Logger logger = Logger.getLogger(AccessServlet.class);
-		 
+
 		public static void main(String args[]) {
 
 		try {
@@ -28,6 +28,7 @@ public class AccessLogMessage {
 			logger.error("Don NOT Reply to this mail-ID",e);
 		 }
 	}
+
 }
 
 

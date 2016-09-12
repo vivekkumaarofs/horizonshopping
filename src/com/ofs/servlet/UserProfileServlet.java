@@ -19,15 +19,15 @@ public class UserProfileServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	ProductService shoppingCartService = new ProductServiceImpl();
-	StringBuffer requestJson = new StringBuffer();
 	String line = null;
 
-	public void doPost (HttpServletRequest request, HttpServletResponse response) 
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
      throws IOException, ServletException {
 
 		response.setContentType("multipart/form-data");
 		try {
 			BufferedReader reader = request.getReader();
+			StringBuffer requestJson = new StringBuffer();
 			while((line = reader.readLine()) !=null)
 				requestJson.append(line);
 			Product shoppingcart = HorrizonShoppingJson.fromJSON(requestJson.toString(), Product.class);	
@@ -43,7 +43,7 @@ public class UserProfileServlet extends HttpServlet{
 
 		response.setContentType("appication/json");
 		String requestid = request.getParameter("id");
-		
+
 		try {
 			List<Product> shopcart = shoppingCartService.readOneShoppingCartService(Integer.parseInt(requestid));
 			String shopcartstring = HorrizonShoppingJson.toJSON(shopcart);
@@ -61,6 +61,7 @@ public class UserProfileServlet extends HttpServlet{
 		response.setContentType("application/json");
 		try {
 			BufferedReader reader = request.getReader();
+			StringBuffer requestJson = new StringBuffer();
 			while((line = reader.readLine()) != null){
 				requestJson.append(line);
 			}
@@ -76,6 +77,7 @@ public class UserProfileServlet extends HttpServlet{
 		response.setContentType("application/json");
 		try {
 			BufferedReader reader = request.getReader();
+			StringBuffer requestJson = new StringBuffer();
 			while((line = reader.readLine())!=null){
 				requestJson.append(line);
 			}

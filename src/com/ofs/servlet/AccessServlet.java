@@ -24,15 +24,15 @@ public class AccessServlet extends HttpServlet {
 
 	public void doGet (HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		
-		response.setContentType("application/json");    
+
+		response.setContentType("application/json");
 		try {
 			String id = request.getParameter("id");
 			UserService userservice = new UserServiceImpl();
 			User user = userservice.readOneService(Integer.parseInt(id));
 			String userstring = HorrizonShoppingJson.toJSON(user);
 			PrintWriter printwriter = response.getWriter();
-			printwriter.print(userstring);    	
+			printwriter.print(userstring);
 		} catch (Exception e) {
 			throw new AppException(e);
 		}

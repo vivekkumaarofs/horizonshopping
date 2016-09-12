@@ -49,13 +49,13 @@ public class DAOQueries {
 	
 
 	public final static String ADD_SHOPPING_CART = new StringBuilder().
-			append(" INSERT INTO shop_cart    ").
-			append("          (id,            ").
-			append("     	   pId,	          ").
-			append("     	   product_count, ").
-			append("           total_amount)  ").
-			append(" VALUES   ( ? , ?,        ").
-			append("            ? , ?      ); ").
+			append(" INSERT INTO shop_cart     ").
+			append("          ( id,            ").
+			append("     	    pId,	       ").
+			append("     	    product_count, ").
+			append("            total_amount)  ").
+			append(" VALUES   ( ? , ?,         ").
+			append("            ? , ?      );  ").
 			toString();
 
 	public final static String UPDATE_USER_DETAILS = new StringBuilder().
@@ -213,4 +213,5 @@ public class DAOQueries {
 			append(" ORDER BY                                    ").
 			append("    user_info.id;                            ").
 			toString();
+
 }

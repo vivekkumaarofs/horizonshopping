@@ -7,7 +7,7 @@ import com.ofs.model.Product;
 
 public interface CategoryService {
 
-	public void addCategoryService(Product category) throws SQLException, Exception;
+	//public void addCategoryService(Product category) throws SQLException, Exception;
 
 	public List<Product> readAllCategoryService() throws Exception;
 

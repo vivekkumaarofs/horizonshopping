@@ -12,14 +12,13 @@ public class CategoryServiceImpl implements CategoryService {
 
 	CategoryDAO categoryDAO = new CategoryDAOImpl();
 
-	public void addCategoryService(Product category) throws SQLException, Exception {
-		
-	ValidationHorizonShopping validation = new ValidationHorizonShopping();
-	validation.validateCategory(category);
-	categoryDAO.addCategory(category);
-
-	}
-	
+//	public void addCategoryService(Product category) throws SQLException, Exception {	
+//	ValidationHorizonShopping validation = new ValidationHorizonShopping();
+//	validation.validateCategory(category);
+//	categoryDAO.addCategory(category);
+//
+//	}
+//	
 	public List<Product> readAllCategoryService() throws Exception{
 		return categoryDAO.readAllCategory();
 	}

@@ -65,7 +65,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	public int addShoppingCart(Product shoppingcart) throws Exception {
-	
+
 		Connection connection = DatabaseUtil.getDbCon();
 		PreparedStatement ps = connection.prepareStatement(DAOQueries.ADD_SHOPPING_CART,Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, shoppingcart.id);

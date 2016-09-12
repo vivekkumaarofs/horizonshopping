@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ofs.exception.AppException;
 import com.ofs.model.HorrizonShoppingJson;
-import com.ofs.model.Product;
-
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
@@ -44,12 +42,13 @@ public class HmsServlet extends HttpServlet {
 		
 		try {
 			Class<?>serviceClazz = Class.forName(serviceClassName);	
+			Class<?> loadapiClass = Class.forName(modelPackageName);
+			
 			StringBuffer requestJson = new StringBuffer();
 				BufferedReader reader = request.getReader();
 				while((line = reader.readLine()) !=null)
 					requestJson.append(line);
-			Method addCategory = serviceClazz.getDeclaredMethod("addMainCategoryService");
-			Class<?> loadapiClass = Class.forName(modelPackageName);
+			Method addCategory = serviceClazz.getDeclaredMethod("addMainCategoryService",loadapiClass);
 			Object objServiceClazz = serviceClazz.newInstance();
 			Object Category  = HorrizonShoppingJson.fromJSON(requestJson.toString(), loadapiClass);
 			addCategory.invoke(objServiceClazz,Category);
@@ -60,4 +59,3 @@ public class HmsServlet extends HttpServlet {
 	}
 
 }
-//

@@ -137,9 +137,9 @@ public class ValidationHorizonShopping {
 		
 		String namePattern ="^[A-Za-z]+";
 
-		if(category.getParentCategoryName() == null || category.getCategoryName().isEmpty() || 
-				!(category.getCategoryName().matches(namePattern))){
-			throw new AppException(AppErrorCode.INVALID_CATEGORY_NAME);
+		if(category.getParentCategoryName() == null || category.getParentCategoryName().isEmpty() || 
+				!(category.getParentCategoryName().matches(namePattern))) {
+			throw new AppException(AppErrorCode.INVALID_PARENT_CATEGORY_NAME);
 		}
 
 	}
